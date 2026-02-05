@@ -3,296 +3,619 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0a0a0a">
 <title>EagleFang BJJ — Training Log</title>
-<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ===== HARD RESET ===== */
+*, *::before, *::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+html {
+width: 100%;
+height: 100%;
+overflow-x: hidden;
+-webkit-text-size-adjust: 100%;
+}
+body {
+width: 100%;
+min-height: 100vh;
+margin: 0;
+padding: 0;
+overflow-x: hidden;
+background-color: #0a0a0a;
+background-image: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f1a 100%);
+background-attachment: fixed;
+font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif;
+color: #e0e0e0;
+line-height: 1.4;
+}
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+input, textarea, select { font-family: Arial, Helvetica, sans-serif; }
 
 ```
-:root {
---red: #dc2626;
---red-dark: #991b1b;
---red-darkest: #7f1d1d;
---blue: #2563eb;
---blue-dark: #1d4ed8;
---green: #4ade80;
---green-bg: rgba(22, 101, 52, 0.3);
---green-border: rgba(34, 197, 94, 0.5);
---gray-100: #f5f5f5;
---gray-300: #d1d5db;
---gray-400: #9ca3af;
---gray-500: #6b7280;
---gray-600: #4b5563;
---gray-700: #374151;
---card-bg: linear-gradient(145deg, rgba(30, 30, 40, 0.9) 0%, rgba(20, 20, 30, 0.95) 100%);
---card-border: 1px solid rgba(220, 38, 38, 0.3);
---card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05);
---input-bg: rgba(0, 0, 0, 0.4);
---input-border: 2px solid rgba(107, 114, 128, 0.3);
---input-border-sm: 1px solid rgba(107, 114, 128, 0.2);
-}
-
-body {
-min-height: 100vh;
-background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f1a 100%);
-font-family: 'Bebas Neue', 'Impact', sans-serif;
-color: #e0e0e0;
-overflow-x: hidden;
-}
-
+/* ===== BACKGROUND PATTERN ===== */
 .bg-pattern {
-position: fixed; inset: 0;
+position: fixed;
+top: 0; left: 0; right: 0; bottom: 0;
+width: 100%; height: 100%;
 background-image:
 radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
 radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.15) 0%, transparent 50%),
 repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.01) 35px, rgba(255,255,255,0.01) 70px);
-pointer-events: none; z-index: 0;
+pointer-events: none;
+z-index: 0;
 }
 
-/* Header */
+/* ===== HEADER ===== */
 header {
-position: relative; z-index: 10;
+position: relative;
+z-index: 10;
+width: 100%;
 padding: 20px 24px;
-border-bottom: 3px solid var(--red);
-background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
-backdrop-filter: blur(10px);
+border-bottom: 3px solid #dc2626;
+background-color: rgba(0,0,0,0.7);
+background-image: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
 }
 .header-inner {
-max-width: 1200px; margin: 0 auto;
-display: flex; align-items: center; justify-content: space-between;
-flex-wrap: wrap; gap: 16px;
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 16px;
 }
-.logo-group { display: flex; align-items: center; gap: 20px; }
+.logo-group {
+display: flex;
+align-items: center;
+gap: 20px;
+}
 .logo-box {
-width: 70px; height: 70px;
-background: linear-gradient(135deg, #1a1a2e 0%, #0a0a15 100%);
+width: 70px;
+height: 70px;
+min-width: 70px;
+background-color: #0a0a15;
+background-image: linear-gradient(135deg, #1a1a2e 0%, #0a0a15 100%);
 border-radius: 12px;
-display: flex; align-items: center; justify-content: center;
+display: flex;
+align-items: center;
+justify-content: center;
 box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4), inset 0 0 20px rgba(220, 38, 38, 0.1);
 border: 2px solid rgba(220, 38, 38, 0.5);
 overflow: visible;
 }
-.title-text { font-size: 42px; font-weight: 400; letter-spacing: 4px; display: flex; gap: 16px; }
-.title-eagle { background: linear-gradient(180deg, #fff 0%, #e5e5e5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.title-fang { background: linear-gradient(180deg, #dc2626 0%, #991b1b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.title-bjj { background: linear-gradient(180deg, #9ca3af 0%, #6b7280 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 36px; }
-.subtitle { font-size: 12px; letter-spacing: 6px; color: var(--gray-500); font-family: Arial, sans-serif; text-transform: uppercase; }
-
-.nav-btns { display: flex; gap: 12px; }
+.logo-box svg { overflow: visible; }
+.title-wrap h1 {
+font-size: 42px;
+font-weight: 400;
+letter-spacing: 4px;
+margin: 0;
+padding: 0;
+line-height: 1.1;
+display: flex;
+gap: 16px;
+flex-wrap: wrap;
+}
+.title-eagle {
+background: linear-gradient(180deg, #ffffff 0%, #e5e5e5 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.title-fang {
+background: linear-gradient(180deg, #dc2626 0%, #991b1b 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.title-bjj {
+background: linear-gradient(180deg, #9ca3af 0%, #6b7280 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+font-size: 36px;
+}
+.subtitle {
+font-size: 12px;
+letter-spacing: 6px;
+margin: 4px 0 0 0;
+color: #6b7280;
+font-family: Arial, Helvetica, sans-serif;
+text-transform: uppercase;
+font-weight: normal;
+}
+.nav-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 .nav-btn {
-padding: 12px 24px; font-size: 16px; letter-spacing: 2px;
-border: 2px solid var(--gray-700); background: transparent;
-color: var(--gray-400); cursor: pointer; border-radius: 8px;
-transition: all 0.2s ease; font-family: 'Bebas Neue', sans-serif;
+padding: 12px 24px;
+font-size: 16px;
+letter-spacing: 2px;
+border: 2px solid #374151;
+background-color: transparent;
+color: #9ca3af;
+cursor: pointer;
+border-radius: 8px;
+transition: all 0.2s ease;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+line-height: 1;
+-webkit-appearance: none;
+appearance: none;
 }
 .nav-btn:hover { transform: translateY(-2px); }
-.nav-btn.active { border-color: var(--red); background: rgba(220, 38, 38, 0.2); color: var(--red); }
-
-/* Main */
-main {
-position: relative; z-index: 10;
-max-width: 1200px; margin: 0 auto; padding: 32px 24px;
+.nav-btn:active { transform: translateY(0); }
+.nav-btn.active {
+border-color: #dc2626;
+background-color: rgba(220, 38, 38, 0.2);
+color: #dc2626;
 }
 
+/* ===== MAIN ===== */
+main {
+position: relative;
+z-index: 10;
+max-width: 1200px;
+margin: 0 auto;
+padding: 32px 24px;
+}
+
+/* ===== CARDS ===== */
 .card {
-background: var(--card-bg); border-radius: 16px; padding: 24px;
-border: var(--card-border); box-shadow: var(--card-shadow);
+background-color: rgba(25, 25, 35, 0.95);
+background-image: linear-gradient(145deg, rgba(30, 30, 40, 0.9) 0%, rgba(20, 20, 30, 0.95) 100%);
+border-radius: 16px;
+padding: 24px;
+border: 1px solid rgba(220, 38, 38, 0.3);
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05);
 margin-bottom: 24px;
 }
 .card-label {
-display: block; font-size: 14px; letter-spacing: 3px;
-color: var(--red); margin-bottom: 12px; font-family: 'Bebas Neue', sans-serif;
+display: block;
+font-size: 14px;
+letter-spacing: 3px;
+color: #dc2626;
+margin-bottom: 12px;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+font-weight: normal;
 }
 .card-label-sm {
-display: block; font-size: 12px; letter-spacing: 2px;
-color: var(--gray-400); margin-bottom: 8px; font-family: 'Bebas Neue', sans-serif;
+display: block;
+font-size: 12px;
+letter-spacing: 2px;
+color: #9ca3af;
+margin-bottom: 8px;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+font-weight: normal;
 }
 
-input[type="text"], input[type="date"], textarea {
-width: 100%; padding: 14px 16px; font-size: 18px;
-background: var(--input-bg); border: var(--input-border);
-border-radius: 8px; color: #e0e0e0; outline: none;
-font-family: Arial, sans-serif;
+/* ===== INPUTS ===== */
+input[type="text"],
+input[type="date"],
+textarea {
+width: 100%;
+padding: 14px 16px;
+font-size: 18px;
+background-color: rgba(0, 0, 0, 0.4);
+border: 2px solid rgba(107, 114, 128, 0.3);
+border-radius: 8px;
+color: #e0e0e0;
+outline: none;
+font-family: Arial, Helvetica, sans-serif;
+-webkit-appearance: none;
+appearance: none;
 }
-input::placeholder, textarea::placeholder { color: var(--gray-500); }
-input:focus, textarea:focus { border-color: rgba(220, 38, 38, 0.5) !important; box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1); }
-textarea { resize: vertical; line-height: 1.5; font-size: 15px; padding: 12px; }
+textarea {
+resize: vertical;
+line-height: 1.5;
+font-size: 15px;
+padding: 12px;
+}
+input::placeholder, textarea::placeholder { color: #6b7280; }
+input:focus, textarea:focus {
+border-color: rgba(220, 38, 38, 0.5) !important;
+box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 
-.two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 24px; }
+/* ===== LAYOUT ===== */
+.two-col {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 24px;
+margin-bottom: 24px;
+}
+.two-col > .card { margin-bottom: 0; }
 
 .notes-inner {
-background: rgba(0, 0, 0, 0.3); border-radius: 12px; padding: 16px;
-border: var(--input-border-sm); margin-top: 16px;
+background-color: rgba(0, 0, 0, 0.3);
+border-radius: 12px;
+padding: 16px;
+border: 1px solid rgba(107, 114, 128, 0.2);
+margin-top: 16px;
 }
 
-/* Rounds */
+/* ===== ROUNDS ===== */
 .round-item {
-background: rgba(0, 0, 0, 0.3); border-radius: 12px;
-border: var(--input-border-sm); overflow: hidden;
-transition: all 0.2s ease; margin-bottom: 12px;
+background-color: rgba(0, 0, 0, 0.3);
+border-radius: 12px;
+border: 1px solid rgba(107, 114, 128, 0.2);
+overflow: hidden;
+transition: all 0.2s ease;
+margin-bottom: 12px;
 }
-.round-item.expanded { background: rgba(220, 38, 38, 0.1); border-color: rgba(220, 38, 38, 0.4); }
+.round-item.expanded {
+background-color: rgba(220, 38, 38, 0.1);
+border-color: rgba(220, 38, 38, 0.4);
+}
 .round-header {
-width: 100%; padding: 16px 20px;
-display: flex; align-items: center; justify-content: space-between;
-background: transparent; border: none; cursor: pointer; color: #e0e0e0;
-font-family: 'Bebas Neue', sans-serif;
+width: 100%;
+padding: 16px 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+background-color: transparent;
+border: none;
+cursor: pointer;
+color: #e0e0e0;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+font-size: 16px;
+-webkit-appearance: none;
+appearance: none;
+text-align: left;
 }
 .round-header:hover { opacity: 0.9; }
+.round-left { display: flex; align-items: center; }
 .round-num {
-width: 36px; height: 36px; border-radius: 8px;
-display: inline-flex; align-items: center; justify-content: center;
-font-size: 18px; font-weight: bold; background: rgba(107, 114, 128, 0.3);
-font-family: 'Bebas Neue', sans-serif;
+width: 36px;
+height: 36px;
+min-width: 36px;
+border-radius: 8px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+font-weight: bold;
+background-color: rgba(107, 114, 128, 0.3);
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+color: #e0e0e0;
 }
-.round-num.filled { background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); }
-.round-label { font-size: 18px; letter-spacing: 2px; margin-left: 12px; }
-.round-partner { font-size: 14px; color: var(--gray-400); font-family: Arial, sans-serif; margin-left: 12px; }
-.round-arrow { transition: transform 0.2s ease; font-size: 20px; }
+.round-num.filled {
+background-color: #b91c1c;
+background-image: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+}
+.round-label {
+font-size: 18px;
+letter-spacing: 2px;
+margin-left: 12px;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+}
+.round-partner-display {
+font-size: 14px;
+color: #9ca3af;
+font-family: Arial, Helvetica, sans-serif;
+margin-left: 12px;
+}
+.round-arrow {
+transition: transform 0.2s ease;
+font-size: 20px;
+line-height: 1;
+}
 .round-arrow.open { transform: rotate(180deg); }
-.round-body { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 16px; }
-.round-body input, .round-body textarea { border: var(--input-border-sm); font-size: 16px; padding: 12px 14px; }
+.round-body {
+padding: 0 20px 20px;
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+.round-body input { border-width: 1px; font-size: 16px; padding: 12px 14px; }
+.round-body textarea { border-width: 1px; }
 
-/* Photo */
+/* ===== PHOTO ===== */
 .photo-upload {
-display: flex; flex-direction: column; align-items: center; justify-content: center;
-padding: 40px; background: rgba(0, 0, 0, 0.3);
-border: 2px dashed rgba(107, 114, 128, 0.4); border-radius: 12px;
-cursor: pointer; transition: all 0.2s ease;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 40px;
+background-color: rgba(0, 0, 0, 0.3);
+border: 2px dashed rgba(107, 114, 128, 0.4);
+border-radius: 12px;
+cursor: pointer;
+transition: all 0.2s ease;
 }
 .photo-upload:hover { border-color: rgba(220, 38, 38, 0.5); }
-.photo-upload span.icon { font-size: 48px; margin-bottom: 12px; }
-.photo-upload span.text { font-size: 16px; color: var(--gray-400); font-family: Arial, sans-serif; }
+.photo-upload .icon { font-size: 48px; margin-bottom: 12px; display: block; }
+.photo-upload .text { font-size: 16px; color: #9ca3af; font-family: Arial, Helvetica, sans-serif; }
 .photo-preview { position: relative; }
-.photo-preview img { width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; }
+.photo-preview img {
+width: 100%;
+max-height: 400px;
+object-fit: cover;
+border-radius: 12px;
+}
 .photo-remove {
-position: absolute; top: 12px; right: 12px;
-width: 40px; height: 40px; background: rgba(220, 38, 38, 0.9);
-border: none; border-radius: 8px; color: white; font-size: 20px;
-cursor: pointer; display: flex; align-items: center; justify-content: center;
+position: absolute;
+top: 12px;
+right: 12px;
+width: 40px;
+height: 40px;
+background-color: rgba(220, 38, 38, 0.9);
+border: none;
+border-radius: 8px;
+color: white;
+font-size: 20px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+line-height: 1;
 }
 
-/* Buttons */
+/* ===== BUTTONS ===== */
 .btn-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .btn-save {
-padding: 18px 48px; font-size: 20px; letter-spacing: 3px;
-background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-border: none; border-radius: 12px; color: white; cursor: pointer;
-font-family: 'Bebas Neue', sans-serif;
-box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4); transition: all 0.2s ease;
+padding: 18px 48px;
+font-size: 20px;
+letter-spacing: 3px;
+background-color: #b91c1c;
+background-image: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+border: none;
+border-radius: 12px;
+color: white;
+cursor: pointer;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
+transition: all 0.2s ease;
+-webkit-appearance: none;
+appearance: none;
+line-height: 1;
 }
 .btn-save:hover { transform: translateY(-2px); }
-.btn-save.editing { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4); }
+.btn-save:active { transform: translateY(0); }
+.btn-save.editing {
+background-color: #1d4ed8;
+background-image: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+}
 .btn-clear {
-padding: 18px 48px; font-size: 20px; letter-spacing: 3px;
-background: transparent; border: 2px solid var(--gray-500);
-border-radius: 12px; color: var(--gray-400); cursor: pointer;
-font-family: 'Bebas Neue', sans-serif; transition: all 0.2s ease;
+padding: 18px 48px;
+font-size: 20px;
+letter-spacing: 3px;
+background-color: transparent;
+border: 2px solid #6b7280;
+border-radius: 12px;
+color: #9ca3af;
+cursor: pointer;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+transition: all 0.2s ease;
+-webkit-appearance: none;
+appearance: none;
+line-height: 1;
 }
 .btn-clear:hover { transform: translateY(-2px); }
+.btn-clear:active { transform: translateY(0); }
 
-/* History */
-.history-title { font-size: 28px; letter-spacing: 4px; color: var(--red); margin-bottom: 24px; }
-.empty-state {
-text-align: center; padding: 60px;
-background: rgba(30, 30, 40, 0.5); border-radius: 16px;
-border: var(--input-border-sm);
+/* Action buttons */
+.btn-action {
+padding: 12px 24px;
+font-size: 14px;
+letter-spacing: 2px;
+border-radius: 8px;
+cursor: pointer;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+transition: all 0.2s ease;
+-webkit-appearance: none;
+appearance: none;
+line-height: 1;
 }
-.empty-state .icon { font-size: 64px; }
-.empty-state p { font-size: 20px; color: var(--gray-500); margin-top: 16px; font-family: Arial, sans-serif; }
+.btn-action:hover { transform: translateY(-2px); }
+.btn-action:active { transform: translateY(0); }
+.btn-action.view { background-color: rgba(30, 58, 138, 0.3); border: 1px solid rgba(59, 130, 246, 0.5); color: #60a5fa; }
+.btn-action.edit { background-color: rgba(22, 101, 52, 0.3); border: 1px solid rgba(34, 197, 94, 0.5); color: #4ade80; }
+.btn-action.delete { background-color: rgba(127, 29, 29, 0.3); border: 1px solid rgba(220, 38, 38, 0.5); color: #f87171; }
+.btn-action.back { background-color: transparent; border: 1px solid #6b7280; color: #9ca3af; font-size: 16px; }
+.btn-action.edit-entry { background-color: rgba(22, 101, 52, 0.3); border: 1px solid rgba(34, 197, 94, 0.5); color: #4ade80; font-size: 16px; }
+
+/* ===== EDIT BANNER ===== */
+.edit-banner {
+background-color: rgba(59, 130, 246, 0.15);
+border: 1px solid rgba(59, 130, 246, 0.5);
+border-radius: 12px;
+padding: 16px 24px;
+margin-bottom: 24px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 12px;
+}
+.edit-banner-text {
+font-size: 18px;
+letter-spacing: 2px;
+color: #60a5fa;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+}
+.edit-banner button {
+padding: 8px 20px;
+font-size: 14px;
+letter-spacing: 2px;
+background-color: transparent;
+border: 1px solid #6b7280;
+border-radius: 8px;
+color: #9ca3af;
+cursor: pointer;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+-webkit-appearance: none;
+}
+
+/* ===== HISTORY ===== */
+.history-title {
+font-size: 28px;
+letter-spacing: 4px;
+color: #dc2626;
+margin-bottom: 24px;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+font-weight: normal;
+}
+.empty-state {
+text-align: center;
+padding: 60px 24px;
+background-color: rgba(30, 30, 40, 0.5);
+border-radius: 16px;
+border: 1px solid rgba(107, 114, 128, 0.2);
+}
+.empty-state .icon { font-size: 64px; display: block; }
+.empty-state p { font-size: 20px; color: #6b7280; margin-top: 16px; font-family: Arial, Helvetica, sans-serif; }
 
 .history-card {
-background: var(--card-bg); border-radius: 16px; padding: 20px 24px;
-border: var(--card-border);
-display: flex; align-items: center; justify-content: space-between;
-flex-wrap: wrap; gap: 16px; margin-bottom: 16px;
+background-color: rgba(25, 25, 35, 0.95);
+background-image: linear-gradient(145deg, rgba(30, 30, 40, 0.9) 0%, rgba(20, 20, 30, 0.95) 100%);
+border-radius: 16px;
+padding: 20px 24px;
+border: 1px solid rgba(220, 38, 38, 0.3);
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 16px;
+margin-bottom: 16px;
 }
-.history-card .info { flex: 1; min-width: 200px; }
-.history-card .date-text { font-size: 22px; letter-spacing: 2px; margin-bottom: 8px; }
-.history-card .meta { font-size: 14px; color: var(--gray-400); font-family: Arial, sans-serif; }
-.history-card .meta .label { color: var(--red); }
-.history-card .meta .sep { margin: 0 12px; color: var(--gray-700); }
-.history-card .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.history-info { flex: 1; min-width: 200px; }
+.history-date {
+font-size: 22px;
+letter-spacing: 2px;
+margin-bottom: 8px;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+}
+.history-meta { font-size: 14px; color: #9ca3af; font-family: Arial, Helvetica, sans-serif; line-height: 1.6; }
+.history-meta .hl { color: #dc2626; }
+.history-meta .sep { margin: 0 12px; color: #374151; }
+.history-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-.btn-view, .btn-edit, .btn-delete, .btn-back, .btn-edit-entry {
-padding: 12px 24px; font-size: 14px; letter-spacing: 2px;
-border-radius: 8px; cursor: pointer;
-font-family: 'Bebas Neue', sans-serif; transition: all 0.2s ease;
-}
-.btn-view { background: rgba(30, 58, 138, 0.3); border: 1px solid rgba(59, 130, 246, 0.5); color: #60a5fa; }
-.btn-edit { background: var(--green-bg); border: 1px solid var(--green-border); color: var(--green); }
-.btn-delete { background: rgba(127, 29, 29, 0.3); border: 1px solid rgba(220, 38, 38, 0.5); color: #f87171; }
-.btn-back { background: transparent; border: 1px solid var(--gray-500); color: var(--gray-400); font-size: 16px; letter-spacing: 2px; }
-.btn-edit-entry { background: var(--green-bg); border: 1px solid var(--green-border); color: var(--green); font-size: 16px; letter-spacing: 2px; }
-.btn-view:hover, .btn-edit:hover, .btn-delete:hover, .btn-back:hover, .btn-edit-entry:hover { transform: translateY(-2px); }
-
-/* Edit banner */
-.edit-banner {
-background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.5);
-border-radius: 12px; padding: 16px 24px; margin-bottom: 24px;
-display: flex; align-items: center; justify-content: space-between;
-flex-wrap: wrap; gap: 12px;
-}
-.edit-banner span { font-size: 18px; letter-spacing: 2px; color: #60a5fa; }
-.edit-banner button {
-padding: 8px 20px; font-size: 14px; letter-spacing: 2px;
-background: transparent; border: 1px solid var(--gray-500);
-border-radius: 8px; color: var(--gray-400); cursor: pointer;
-font-family: 'Bebas Neue', sans-serif;
-}
-
-/* View detail */
+/* ===== VIEW DETAIL ===== */
 .view-header-row { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-.view-card { background: var(--card-bg); border-radius: 16px; padding: 32px; border: var(--card-border); }
-.view-date { font-size: 32px; letter-spacing: 4px; color: var(--red); margin-bottom: 8px; }
-.view-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: var(--input-border-sm); }
-.view-field-label { color: var(--gray-400); font-size: 12px; letter-spacing: 2px; }
-.view-field-value { font-size: 20px; margin: 8px 0 0; font-family: Arial, sans-serif; }
-.view-section-label { color: var(--red); font-size: 14px; letter-spacing: 2px; }
+.view-card {
+background-color: rgba(25, 25, 35, 0.95);
+background-image: linear-gradient(145deg, rgba(30, 30, 40, 0.9) 0%, rgba(20, 20, 30, 0.95) 100%);
+border-radius: 16px;
+padding: 32px;
+border: 1px solid rgba(220, 38, 38, 0.3);
+}
+.view-date {
+font-size: 32px;
+letter-spacing: 4px;
+color: #dc2626;
+margin-bottom: 8px;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+font-weight: normal;
+}
+.view-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 24px;
+margin-bottom: 32px;
+padding-bottom: 24px;
+border-bottom: 1px solid rgba(107, 114, 128, 0.2);
+}
+.view-field-label {
+display: block;
+color: #9ca3af;
+font-size: 12px;
+letter-spacing: 2px;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+}
+.view-field-value {
+font-size: 20px;
+margin: 8px 0 0;
+font-family: Arial, Helvetica, sans-serif;
+color: #e0e0e0;
+}
+.view-section-label {
+display: block;
+color: #dc2626;
+font-size: 14px;
+letter-spacing: 2px;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+}
 .view-notes-block {
-font-size: 16px; margin: 12px 0 0; font-family: Arial, sans-serif;
-line-height: 1.6; color: var(--gray-300);
-background: rgba(0,0,0,0.2); padding: 16px; border-radius: 8px;
+font-size: 16px;
+margin: 12px 0 0;
+font-family: Arial, Helvetica, sans-serif;
+line-height: 1.6;
+color: #d1d5db;
+background-color: rgba(0,0,0,0.2);
+padding: 16px;
+border-radius: 8px;
 }
 .view-round {
-background: rgba(0, 0, 0, 0.3); border-radius: 12px;
-padding: 16px 20px; border: var(--input-border-sm); margin-bottom: 12px;
+background-color: rgba(0, 0, 0, 0.3);
+border-radius: 12px;
+padding: 16px 20px;
+border: 1px solid rgba(107, 114, 128, 0.2);
+margin-bottom: 12px;
 }
 .view-round-header { display: flex; align-items: center; gap: 12px; }
 .view-round-num {
-width: 32px; height: 32px;
-background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-border-radius: 6px; display: inline-flex; align-items: center; justify-content: center;
-font-size: 16px; font-family: 'Bebas Neue', sans-serif;
+width: 32px;
+height: 32px;
+min-width: 32px;
+background-color: #b91c1c;
+background-image: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+border-radius: 6px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+font-size: 16px;
+font-family: 'Bebas Neue', 'Impact', sans-serif;
+color: #e0e0e0;
 }
-.view-round-partner { font-size: 18px; font-family: Arial, sans-serif; }
-.view-round-notes { font-size: 15px; color: var(--gray-400); margin: 12px 0 0; padding-left: 44px; font-family: Arial, sans-serif; line-height: 1.5; }
+.view-round-partner { font-size: 18px; font-family: Arial, Helvetica, sans-serif; color: #e0e0e0; }
+.view-round-notes {
+font-size: 15px;
+color: #9ca3af;
+margin: 12px 0 0;
+padding-left: 44px;
+font-family: Arial, Helvetica, sans-serif;
+line-height: 1.5;
+}
+.no-rounds { color: #6b7280; font-family: Arial, Helvetica, sans-serif; }
 
+/* ===== UTILITY ===== */
 .fade-in { animation: fadeIn 0.3s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
 .hidden { display: none !important; }
 
+/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
 ::-webkit-scrollbar-thumb { background: rgba(220, 38, 38, 0.5); border-radius: 4px; }
 
+/* ===== MOBILE ===== */
 @media (max-width: 600px) {
-.title-text { font-size: 28px; gap: 8px; }
+.title-wrap h1 { font-size: 28px; gap: 8px; }
 .title-bjj { font-size: 24px !important; }
 .header-inner { gap: 12px; }
-.logo-box { width: 50px; height: 50px; }
-.logo-box svg { width: 42px; height: 42px; }
+.logo-box { width: 50px; height: 50px; min-width: 50px; }
+.logo-box svg { width: 42px !important; height: 42px !important; }
 main { padding: 16px 12px; }
 .card { padding: 16px; }
 .btn-save, .btn-clear { padding: 14px 32px; font-size: 18px; }
-.history-card .actions { width: 100%; }
-.history-card .actions button { flex: 1; }
+.history-actions { width: 100%; }
+.history-actions button { flex: 1; min-width: 0; }
+.view-card { padding: 20px; }
+.nav-btn { padding: 10px 16px; font-size: 14px; }
 }
 ```
 
@@ -302,25 +625,25 @@ main { padding: 16px 12px; }
 
 <div class="bg-pattern"></div>
 
-<!-- Header -->
+<!-- ===== HEADER ===== -->
 
 <header>
 <div class="header-inner">
 <div class="logo-group">
 <div class="logo-box">
-<svg viewBox="0 0 64 64" width="60" height="60" style="overflow:visible">
+<svg viewBox="0 0 64 64" width="60" height="60">
 <defs>
-<linearGradient id="headGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
 <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#e5e5e5"/>
 </linearGradient>
-<linearGradient id="beakGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+<linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
 <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#d97706"/>
 </linearGradient>
-<linearGradient id="bloodGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+<linearGradient id="blg" x1="0%" y1="0%" x2="0%" y2="100%">
 <stop offset="0%" stop-color="#dc2626"/><stop offset="100%" stop-color="#7f1d1d"/>
 </linearGradient>
 </defs>
-<ellipse cx="32" cy="22" rx="18" ry="16" fill="url(#headGradient)"/>
+<ellipse cx="32" cy="22" rx="18" ry="16" fill="url(#hg)"/>
 <ellipse cx="26" cy="18" rx="6" ry="5" fill="#f5f5f5"/>
 <ellipse cx="38" cy="18" rx="6" ry="5" fill="#f5f5f5"/>
 <path d="M14 28 Q12 35 16 42 Q20 48 32 50 Q44 48 48 42 Q52 35 50 28 Q45 32 32 34 Q19 32 14 28Z" fill="#3d2914"/>
@@ -332,23 +655,23 @@ main { padding: 16px 12px; }
 <circle cx="39.5" cy="19" r="1" fill="#000"/>
 <path d="M22 16 L30 18" stroke="#5d4520" stroke-width="2" stroke-linecap="round"/>
 <path d="M42 16 L34 18" stroke="#5d4520" stroke-width="2" stroke-linecap="round"/>
-<path d="M28 26 Q32 24 36 26 Q38 28 40 32 Q38 30 32 32 Q26 30 24 32 Q26 28 28 26Z" fill="url(#beakGradient)"/>
-<path d="M26 32 Q32 30 38 32 L40 36 Q38 38 32 40 Q26 38 24 36 Z" fill="url(#beakGradient)"/>
+<path d="M28 26 Q32 24 36 26 Q38 28 40 32 Q38 30 32 32 Q26 30 24 32 Q26 28 28 26Z" fill="url(#bg)"/>
+<path d="M26 32 Q32 30 38 32 L40 36 Q38 38 32 40 Q26 38 24 36 Z" fill="url(#bg)"/>
 <path d="M27 32 L28 35 L29 32 L30 35 L31 32 L32 35 L33 32 L34 35 L35 32 L36 35 L37 32" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M28 36 L29 33.5 L30 36 L31 33.5 L32 36 L33 33.5 L34 36 L35 33.5 L36 36" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<ellipse cx="29" cy="42" rx="1.5" ry="3" fill="url(#bloodGradient)"/>
-<ellipse cx="32" cy="44" rx="1.8" ry="4" fill="url(#bloodGradient)"/>
-<ellipse cx="35" cy="41" rx="1.3" ry="2.5" fill="url(#bloodGradient)"/>
-<path d="M29 45 Q28.5 50 29 54 Q29.5 56 29 58" stroke="url(#bloodGradient)" stroke-width="2" stroke-linecap="round" fill="none"/>
-<path d="M32 48 Q31 55 32 62" stroke="url(#bloodGradient)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-<path d="M35 43.5 Q35.5 47 35 50" stroke="url(#bloodGradient)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+<ellipse cx="29" cy="42" rx="1.5" ry="3" fill="url(#blg)"/>
+<ellipse cx="32" cy="44" rx="1.8" ry="4" fill="url(#blg)"/>
+<ellipse cx="35" cy="41" rx="1.3" ry="2.5" fill="url(#blg)"/>
+<path d="M29 45 Q28.5 50 29 54 Q29.5 56 29 58" stroke="url(#blg)" stroke-width="2" stroke-linecap="round" fill="none"/>
+<path d="M32 48 Q31 55 32 62" stroke="url(#blg)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+<path d="M35 43.5 Q35.5 47 35 50" stroke="url(#blg)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
 <ellipse cx="29" cy="59" rx="2" ry="2.5" fill="#dc2626"/>
 <ellipse cx="32" cy="64" rx="2.5" ry="3" fill="#b91c1c"/>
 <ellipse cx="35" cy="51" rx="1.8" ry="2" fill="#dc2626"/>
 </svg>
 </div>
-<div>
-<h1 class="title-text">
+<div class="title-wrap">
+<h1>
 <span class="title-eagle">EAGLE</span>
 <span class="title-fang">FANG</span>
 <span class="title-bjj">BJJ</span>
@@ -363,22 +686,25 @@ main { padding: 16px 12px; }
 </div>
 </header>
 
+<!-- ===== MAIN CONTENT ===== -->
+
 <main>
+
 <!-- NEW ENTRY VIEW -->
+
 <div id="viewNew" class="fade-in">
-<!-- Edit Banner -->
 <div id="editBanner" class="edit-banner hidden">
-<span id="editBannerText">✏️ EDITING ENTRY</span>
+<span class="edit-banner-text" id="editBannerText">✏️ EDITING ENTRY</span>
 <button onclick="clearForm()">CANCEL EDIT</button>
 </div>
 
 ```
 <div class="two-col">
-<div class="card" style="margin-bottom:0">
+<div class="card">
 <label class="card-label">📅 DATE</label>
 <input type="date" id="entryDate">
 </div>
-<div class="card" style="margin-bottom:0">
+<div class="card">
 <label class="card-label">🥋 INSTRUCTOR</label>
 <input type="text" id="entryInstructor" placeholder="Enter instructor name...">
 </div>
@@ -432,36 +758,42 @@ main { padding: 16px 12px; }
 
 <div id="viewDetail" class="fade-in hidden">
 <div class="view-header-row">
-<button class="btn-back" onclick="showView('history')">← BACK TO HISTORY</button>
-<button class="btn-edit-entry" id="editFromViewBtn" onclick="editFromView()">✏️ EDIT THIS ENTRY</button>
+<button class="btn-action back" onclick="showView('history')">← BACK TO HISTORY</button>
+<button class="btn-action edit-entry" id="editFromViewBtn" onclick="editFromView()">✏️ EDIT THIS ENTRY</button>
 </div>
 <div class="view-card" id="viewDetailContent"></div>
 </div>
+
 </main>
 
-<script>
-// State
-let entries = [];
-let editingEntryId = null;
-let expandedRounds = new Set([1]);
-let currentPhoto = null;
-let viewingEntryId = null;
+<!-- ===== JAVASCRIPT ===== -->
 
-// Init
-document.addEventListener('DOMContentLoaded', () => {
-const saved = localStorage.getItem('eaglefang-bjj-entries');
+<script>
+(function() {
+'use strict';
+
+var entries = [];
+var editingEntryId = null;
+var expandedRounds = new Set([1]);
+var currentPhoto = null;
+var viewingEntryId = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+try {
+var saved = localStorage.getItem('eaglefang-bjj-entries');
 if (saved) entries = JSON.parse(saved);
+} catch(e) { entries = []; }
 updateEntryCount();
 setTodayDate();
 buildRounds();
 });
 
 function setTodayDate() {
-const today = new Date();
-const yyyy = today.getFullYear();
-const mm = String(today.getMonth() + 1).padStart(2, '0');
-const dd = String(today.getDate()).padStart(2, '0');
-document.getElementById('entryDate').value = `${yyyy}-${mm}-${dd}`;
+var d = new Date();
+var yyyy = d.getFullYear();
+var mm = String(d.getMonth() + 1).padStart(2, '0');
+var dd = String(d.getDate()).padStart(2, '0');
+document.getElementById('entryDate').value = yyyy + '-' + mm + '-' + dd;
 }
 
 function updateEntryCount() {
@@ -469,77 +801,76 @@ document.getElementById('entryCount').textContent = entries.length;
 }
 
 function saveToStorage() {
-localStorage.setItem('eaglefang-bjj-entries', JSON.stringify(entries));
+try { localStorage.setItem('eaglefang-bjj-entries', JSON.stringify(entries)); } catch(e) {}
 }
 
-// Fixed date formatting — avoids UTC timezone shift
 function formatDate(dateString) {
-const [year, month, day] = dateString.split('-').map(Number);
-const date = new Date(year, month - 1, day);
-return date.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+if (!dateString) return '—';
+var parts = dateString.split('-');
+var year = parseInt(parts[0], 10);
+var month = parseInt(parts[1], 10) - 1;
+var day = parseInt(parts[2], 10);
+var date = new Date(year, month, day);
+return date.toLocaleDateString('en-US', {
+weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'
+});
 }
 
-// Views
-function showView(view) {
+function escapeHtml(str) {
+if (!str) return '';
+var div = document.createElement('div');
+div.textContent = str;
+return div.innerHTML;
+}
+
+function activeRoundsCount(entry) {
+return entry.rounds.filter(function(r) { return r.partnerName || r.notes; }).length;
+}
+
+window.showView = function(view) {
 document.getElementById('viewNew').classList.toggle('hidden', view !== 'new');
 document.getElementById('viewHistory').classList.toggle('hidden', view !== 'history');
 document.getElementById('viewDetail').classList.toggle('hidden', view !== 'detail');
 document.getElementById('navNew').classList.toggle('active', view === 'new');
 document.getElementById('navHistory').classList.toggle('active', view === 'history' || view === 'detail');
-
-if (view === 'new' && !editingEntryId) clearForm();
+if (view === 'new' && !editingEntryId) clearFormInternal();
 if (view === 'history') renderHistory();
-}
+};
 
-// Rounds
 function buildRounds() {
-const container = document.getElementById('roundsContainer');
-container.innerHTML = '';
-for (let i = 1; i <= 10; i++) {
-const isExpanded = expandedRounds.has(i);
-const partnerVal = document.querySelector(`#roundPartner${i}`)?.value || '';
-const notesVal = document.querySelector(`#roundNotes${i}`)?.value || '';
-const hasFill = partnerVal || notesVal;
-
-const div = document.createElement('div');
-div.className = `round-item${isExpanded ? ' expanded' : ''}`;
-div.id = `roundItem${i}`;
-div.innerHTML = `
-<button class="round-header" onclick="toggleRound(${i})">
-<div style="display:flex;align-items:center">
-<span class="round-num${hasFill ? ' filled' : ''}" id="roundNum${i}">${i}</span>
-<span class="round-label">ROUND ${i}</span>
-<span class="round-partner" id="roundPartnerDisplay${i}">${partnerVal ? 'vs ' + partnerVal : ''}</span>
-</div>
-<span class="round-arrow${isExpanded ? ' open' : ''}" id="roundArrow${i}">▼</span>
-</button>
-<div class="round-body" id="roundBody${i}" ${isExpanded ? '' : 'style="display:none"'}>
-<div>
-<label class="card-label-sm">🤝 TRAINING PARTNER</label>
-<input type="text" id="roundPartner${i}" placeholder="Partner's name..." value="${escapeHtml(partnerVal)}" oninput="updateRoundDisplay(${i})">
-</div>
-<div>
-<label class="card-label-sm">📝 ROUND NOTES</label>
-<textarea id="roundNotes${i}" rows="3" placeholder="What happened? Submissions, positions, things to work on...">${escapeHtml(notesVal)}</textarea>
+var container = document.getElementById('roundsContainer');
+var html = '';
+for (var i = 1; i <= 10; i++) {
+var isExp = expandedRounds.has(i);
+html += '<div class="round-item' + (isExp ? ' expanded' : '') + '" id="roundItem' + i + '">';
+html += '<button class="round-header" onclick="toggleRound(' + i + ')">';
+html += '<div class="round-left">';
+html += '<span class="round-num" id="roundNum' + i + '">' + i + '</span>';
+html += '<span class="round-label">ROUND ' + i + '</span>';
+html += '<span class="round-partner-display" id="roundPD' + i + '"></span>';
+html += '</div>';
+html += '<span class="round-arrow' + (isExp ? ' open' : '') + '" id="roundArrow' + i + '">▼</span>';
+html += '</button>';
+html += '<div class="round-body" id="roundBody' + i + '"' + (isExp ? '' : ' style="display:none"') + '>';
+html += '<div><label class="card-label-sm">🤝 TRAINING PARTNER</label>';
+html += '<input type="text" id="roundPartner' + i + '" placeholder="Partner\'s name..." oninput="updateRoundDisplay(' + i + ')"></div>';
+html += '<div><label class="card-label-sm">📝 ROUND NOTES</label>';
+html += '<textarea id="roundNotes' + i + '" rows="3" placeholder="What happened? Submissions, positions, things to work on..."></textarea></div>';
 
 ```
-</div>
-</div>
-`;
-container.appendChild(div);
+html += '</div></div>';
+}
+container.innerHTML = html;
 ```
 
 }
-}
 
-function toggleRound(num) {
+window.toggleRound = function(num) {
 if (expandedRounds.has(num)) expandedRounds.delete(num);
 else expandedRounds.add(num);
-
-const body = document.getElementById(`roundBody${num}`);
-const arrow = document.getElementById(`roundArrow${num}`);
-const item = document.getElementById(`roundItem${num}`);
-
+var body = document.getElementById(‘roundBody’ + num);
+var arrow = document.getElementById(‘roundArrow’ + num);
+var item = document.getElementById(‘roundItem’ + num);
 if (expandedRounds.has(num)) {
 body.style.display = ‘’;
 arrow.classList.add(‘open’);
@@ -549,205 +880,234 @@ body.style.display = ‘none’;
 arrow.classList.remove(‘open’);
 item.classList.remove(‘expanded’);
 }
-}
+};
 
-function updateRoundDisplay(num) {
-const val = document.getElementById(`roundPartner${num}`).value;
-document.getElementById(`roundPartnerDisplay${num}`).textContent = val ? `vs ${val}` : ‘’;
-const notes = document.getElementById(`roundNotes${num}`).value;
-const numEl = document.getElementById(`roundNum${num}`);
+window.updateRoundDisplay = function(num) {
+var val = document.getElementById(‘roundPartner’ + num).value;
+document.getElementById(‘roundPD’ + num).textContent = val ? ’vs ’ + val : ‘’;
+var notes = document.getElementById(‘roundNotes’ + num).value;
+var numEl = document.getElementById(‘roundNum’ + num);
 if (val || notes) numEl.classList.add(‘filled’);
 else numEl.classList.remove(‘filled’);
-}
+};
 
-// Photo
-function handlePhoto(e) {
-const file = e.target.files[0];
+window.handlePhoto = function(e) {
+var file = e.target.files[0];
 if (!file) return;
-const reader = new FileReader();
-reader.onloadend = () => {
+var reader = new FileReader();
+reader.onloadend = function() {
 currentPhoto = reader.result;
 document.getElementById(‘photoPreviewImg’).src = currentPhoto;
 document.getElementById(‘photoUploadArea’).classList.add(‘hidden’);
 document.getElementById(‘photoPreviewArea’).classList.remove(‘hidden’);
 };
 reader.readAsDataURL(file);
-}
+};
 
-function removePhoto() {
+window.removePhoto = function() {
 currentPhoto = null;
 document.getElementById(‘photoInput’).value = ‘’;
 document.getElementById(‘photoUploadArea’).classList.remove(‘hidden’);
 document.getElementById(‘photoPreviewArea’).classList.add(‘hidden’);
-}
+};
 
-// Save
-function saveEntry() {
-const rounds = [];
-for (let i = 1; i <= 10; i++) {
+window.saveEntry = function() {
+var rounds = [];
+for (var i = 1; i <= 10; i++) {
 rounds.push({
 roundNumber: i,
-partnerName: document.getElementById(`roundPartner${i}`).value,
-notes: document.getElementById(`roundNotes${i}`).value
+partnerName: document.getElementById(‘roundPartner’ + i).value,
+notes: document.getElementById(‘roundNotes’ + i).value
 });
 }
-
-const entry = {
+var entry = {
 id: editingEntryId || Date.now(),
 date: document.getElementById(‘entryDate’).value,
 instructor: document.getElementById(‘entryInstructor’).value,
 techniqueCovered: document.getElementById(‘entryTechnique’).value,
 techniqueNotes: document.getElementById(‘entryTechniqueNotes’).value,
-rounds,
+rounds: rounds,
 photo: currentPhoto,
 savedAt: new Date().toISOString()
 };
-
 if (editingEntryId) {
-const idx = entries.findIndex(e => e.id === editingEntryId);
-if (idx !== -1) entries[idx] = entry;
+for (var j = 0; j < entries.length; j++) {
+if (entries[j].id === editingEntryId) { entries[j] = entry; break; }
+}
 } else {
 entries.push(entry);
 }
-
 saveToStorage();
 updateEntryCount();
-clearForm();
-}
+clearFormInternal();
+};
 
-// Clear
-function clearForm() {
+function clearFormInternal() {
 editingEntryId = null;
 setTodayDate();
 document.getElementById(‘entryInstructor’).value = ‘’;
 document.getElementById(‘entryTechnique’).value = ‘’;
 document.getElementById(‘entryTechniqueNotes’).value = ‘’;
-removePhoto();
+currentPhoto = null;
+document.getElementById(‘photoInput’).value = ‘’;
+document.getElementById(‘photoUploadArea’).classList.remove(‘hidden’);
+document.getElementById(‘photoPreviewArea’).classList.add(‘hidden’);
 expandedRounds = new Set([1]);
-
-// Clear round inputs then rebuild
-for (let i = 1; i <= 10; i++) {
-const p = document.getElementById(`roundPartner${i}`);
-const n = document.getElementById(`roundNotes${i}`);
-if (p) p.value = ‘’;
-if (n) n.value = ‘’;
-}
 buildRounds();
-
 document.getElementById(‘editBanner’).classList.add(‘hidden’);
 document.getElementById(‘saveBtn’).textContent = ‘💾 SAVE ENTRY’;
 document.getElementById(‘saveBtn’).classList.remove(‘editing’);
 }
+window.clearForm = clearFormInternal;
 
-// History
 function renderHistory() {
-const list = document.getElementById(‘historyList’);
+var list = document.getElementById(‘historyList’);
 if (entries.length === 0) {
-list.innerHTML = `<div class="empty-state"><span class="icon">🥋</span><p>No training sessions logged yet. Start your journey!</p></div>`;
+list.innerHTML = ‘<div class="empty-state"><span class="icon">🥋</span><p>No training sessions logged yet. Start your journey!</p></div>’;
 return;
 }
-
-list.innerHTML = […entries].reverse().map(entry => {
-const activeRounds = entry.rounds.filter(r => r.partnerName || r.notes).length;
-return `<div class="history-card"> <div class="info"> <div class="date-text">${formatDate(entry.date)}</div> <div class="meta"> <span class="label">Instructor:</span> ${escapeHtml(entry.instructor) || 'Not specified'} <span class="sep">|</span> <span class="label">Technique:</span> ${escapeHtml(entry.techniqueCovered) || 'Not specified'} <span class="sep">|</span> <span class="label">Rounds:</span> ${activeRounds} </div> </div> <div class="actions"> <button class="btn-view" onclick="viewDetail(${entry.id})">👁️ VIEW</button> <button class="btn-edit" onclick="editEntry(${entry.id})">✏️ EDIT</button> <button class="btn-delete" onclick="deleteEntry(${entry.id})">🗑️ DELETE</button> </div> </div>`;
-}).join(’’);
+var sorted = entries.slice().reverse();
+var html = ‘’;
+for (var i = 0; i < sorted.length; i++) {
+var entry = sorted[i];
+var ar = activeRoundsCount(entry);
+html += ‘<div class="history-card">’;
+html += ‘<div class="history-info">’;
+html += ‘<div class="history-date">’ + formatDate(entry.date) + ‘</div>’;
+html += ‘<div class="history-meta">’;
+html += ’<span class="hl">Instructor:</span> ’ + (escapeHtml(entry.instructor) || ‘Not specified’);
+html += ‘<span class="sep">|</span>’;
+html += ’<span class="hl">Technique:</span> ’ + (escapeHtml(entry.techniqueCovered) || ‘Not specified’);
+html += ‘<span class="sep">|</span>’;
+html += ’<span class="hl">Rounds:</span> ’ + ar;
+html += ‘</div></div>’;
+html += ‘<div class="history-actions">’;
+html += ‘<button class="btn-action view" onclick="viewDetail(' + entry.id + ')">👁️ VIEW</button>’;
+html += ‘<button class="btn-action edit" onclick="editEntry(' + entry.id + ')">✏️ EDIT</button>’;
+html += ‘<button class="btn-action delete" onclick="deleteEntry(' + entry.id + ')">🗑️ DELETE</button>’;
+html += ‘</div></div>’;
+}
+list.innerHTML = html;
 }
 
-function viewDetail(id) {
-const entry = entries.find(e => e.id === id);
+window.viewDetail = function(id) {
+var entry = null;
+for (var i = 0; i < entries.length; i++) { if (entries[i].id === id) { entry = entries[i]; break; } }
 if (!entry) return;
 viewingEntryId = id;
 
-const activeRounds = entry.rounds.filter(r => r.partnerName || r.notes);
-const roundsHtml = activeRounds.length > 0
-? activeRounds.map(r => `<div class="view-round"> <div class="view-round-header"> <span class="view-round-num">${r.roundNumber}</span> <span class="view-round-partner">${r.partnerName ?`vs ${escapeHtml(r.partnerName)}`:`Round ${r.roundNumber}`}</span> </div> ${r.notes ? `<p class="view-round-notes">${escapeHtml(r.notes)}</p>`: ''} </div>`).join(’’)
-: `<p style="color:#6b7280;font-family:Arial,sans-serif">No rounds logged for this session.</p>`;
-
-document.getElementById(‘viewDetailContent’).innerHTML = `<h2 class="view-date">${formatDate(entry.date)}</h2> <div class="view-grid"> <div> <span class="view-field-label">INSTRUCTOR</span> <p class="view-field-value">${escapeHtml(entry.instructor) || '—'}</p> </div> <div> <span class="view-field-label">TECHNIQUE COVERED</span> <p class="view-field-value">${escapeHtml(entry.techniqueCovered) || '—'}</p> </div> </div> ${entry.techniqueNotes ?`
-<div style="margin-bottom:32px">
-<span class="view-section-label">📝 TECHNIQUE NOTES</span>
-<p class="view-notes-block">${escapeHtml(entry.techniqueNotes)}</p>
-</div>
-`: ''} ${entry.photo ?`
-<div style="margin-bottom:32px">
-<span class="view-section-label">📸 PHOTO</span>
-<img src="${entry.photo}" alt="Training session" style="width:100%;max-height:400px;object-fit:cover;border-radius:12px;margin-top:12px">
-</div>
-`: ''} <div> <span class="view-section-label">⚔️ TRAINING ROUNDS</span> <div style="margin-top:16px">${roundsHtml}</div> </div>`;
-
-showView(‘detail’);
+```
+var activeR = entry.rounds.filter(function(r) { return r.partnerName || r.notes; });
+var roundsHtml = '';
+if (activeR.length > 0) {
+for (var j = 0; j < activeR.length; j++) {
+var r = activeR[j];
+roundsHtml += '<div class="view-round">';
+roundsHtml += '<div class="view-round-header">';
+roundsHtml += '<span class="view-round-num">' + r.roundNumber + '</span>';
+roundsHtml += '<span class="view-round-partner">' + (r.partnerName ? 'vs ' + escapeHtml(r.partnerName) : 'Round ' + r.roundNumber) + '</span>';
+roundsHtml += '</div>';
+if (r.notes) roundsHtml += '<p class="view-round-notes">' + escapeHtml(r.notes) + '</p>';
+roundsHtml += '</div>';
+}
+} else {
+roundsHtml = '<p class="no-rounds">No rounds logged for this session.</p>';
 }
 
-function editEntry(id) {
-const entry = entries.find(e => e.id === id);
+var html = '<h2 class="view-date">' + formatDate(entry.date) + '</h2>';
+html += '<div class="view-grid"><div>';
+html += '<span class="view-field-label">INSTRUCTOR</span>';
+html += '<p class="view-field-value">' + (escapeHtml(entry.instructor) || '—') + '</p>';
+html += '</div><div>';
+html += '<span class="view-field-label">TECHNIQUE COVERED</span>';
+html += '<p class="view-field-value">' + (escapeHtml(entry.techniqueCovered) || '—') + '</p>';
+html += '</div></div>';
+if (entry.techniqueNotes) {
+html += '<div style="margin-bottom:32px">';
+html += '<span class="view-section-label">📝 TECHNIQUE NOTES</span>';
+html += '<p class="view-notes-block">' + escapeHtml(entry.techniqueNotes) + '</p></div>';
+}
+if (entry.photo) {
+html += '<div style="margin-bottom:32px">';
+html += '<span class="view-section-label">📸 PHOTO</span>';
+html += '<img src="' + entry.photo + '" alt="Training session" style="width:100%;max-height:400px;object-fit:cover;border-radius:12px;margin-top:12px">';
+html += '</div>';
+}
+html += '<div><span class="view-section-label">⚔️ TRAINING ROUNDS</span>';
+html += '<div style="margin-top:16px">' + roundsHtml + '</div></div>';
+
+document.getElementById('viewDetailContent').innerHTML = html;
+showView('detail');
+```
+
+};
+
+window.editEntry = function(id) {
+var entry = null;
+for (var i = 0; i < entries.length; i++) { if (entries[i].id === id) { entry = entries[i]; break; } }
 if (!entry) return;
 
+```
 editingEntryId = entry.id;
-document.getElementById(‘entryDate’).value = entry.date;
-document.getElementById(‘entryInstructor’).value = entry.instructor;
-document.getElementById(‘entryTechnique’).value = entry.techniqueCovered;
-document.getElementById(‘entryTechniqueNotes’).value = entry.techniqueNotes;
+document.getElementById('entryDate').value = entry.date;
+document.getElementById('entryInstructor').value = entry.instructor;
+document.getElementById('entryTechnique').value = entry.techniqueCovered;
+document.getElementById('entryTechniqueNotes').value = entry.techniqueNotes;
 
 if (entry.photo) {
 currentPhoto = entry.photo;
-document.getElementById(‘photoPreviewImg’).src = currentPhoto;
-document.getElementById(‘photoUploadArea’).classList.add(‘hidden’);
-document.getElementById(‘photoPreviewArea’).classList.remove(‘hidden’);
+document.getElementById('photoPreviewImg').src = currentPhoto;
+document.getElementById('photoUploadArea').classList.add('hidden');
+document.getElementById('photoPreviewArea').classList.remove('hidden');
 } else {
-removePhoto();
+currentPhoto = null;
+document.getElementById('photoInput').value = '';
+document.getElementById('photoUploadArea').classList.remove('hidden');
+document.getElementById('photoPreviewArea').classList.add('hidden');
 }
 
-// Set round values
 expandedRounds = new Set();
-for (let i = 1; i <= 10; i++) {
-const round = entry.rounds[i - 1];
-const pEl = document.getElementById(`roundPartner${i}`);
-const nEl = document.getElementById(`roundNotes${i}`);
-if (pEl) pEl.value = round ? round.partnerName : ‘’;
-if (nEl) nEl.value = round ? round.notes : ‘’;
-if (round && (round.partnerName || round.notes)) expandedRounds.add(i);
+for (var k = 0; k < entry.rounds.length; k++) {
+var rd = entry.rounds[k];
+if (rd.partnerName || rd.notes) expandedRounds.add(rd.roundNumber);
 }
 if (expandedRounds.size === 0) expandedRounds.add(1);
 buildRounds();
 
-// Re-set values after rebuild
-for (let i = 1; i <= 10; i++) {
-const round = entry.rounds[i - 1];
-if (round) {
-document.getElementById(`roundPartner${i}`).value = round.partnerName;
-document.getElementById(`roundNotes${i}`).value = round.notes;
-updateRoundDisplay(i);
-}
-}
-
-document.getElementById(‘editBanner’).classList.remove(‘hidden’);
-document.getElementById(‘editBannerText’).textContent = `✏️ EDITING ENTRY — ${formatDate(entry.date)}`;
-document.getElementById(‘saveBtn’).textContent = ‘✏️ UPDATE ENTRY’;
-document.getElementById(‘saveBtn’).classList.add(‘editing’);
-
-showView(‘new’);
-window.scrollTo({ top: 0, behavior: ‘smooth’ });
+for (var m = 0; m < entry.rounds.length; m++) {
+var round = entry.rounds[m];
+var pEl = document.getElementById('roundPartner' + round.roundNumber);
+var nEl = document.getElementById('roundNotes' + round.roundNumber);
+if (pEl) pEl.value = round.partnerName || '';
+if (nEl) nEl.value = round.notes || '';
+updateRoundDisplay(round.roundNumber);
 }
 
-function editFromView() {
+document.getElementById('editBanner').classList.remove('hidden');
+document.getElementById('editBannerText').textContent = '✏️ EDITING ENTRY — ' + formatDate(entry.date);
+document.getElementById('saveBtn').textContent = '✏️ UPDATE ENTRY';
+document.getElementById('saveBtn').classList.add('editing');
+
+showView('new');
+window.scrollTo({ top: 0, behavior: 'smooth' });
+```
+
+};
+
+window.editFromView = function() {
 if (viewingEntryId) editEntry(viewingEntryId);
-}
+};
 
-function deleteEntry(id) {
+window.deleteEntry = function(id) {
 if (!confirm(‘Delete this training session?’)) return;
-entries = entries.filter(e => e.id !== id);
+entries = entries.filter(function(e) { return e.id !== id; });
 saveToStorage();
 updateEntryCount();
-if (viewingEntryId === id) showView(‘history’);
+if (viewingEntryId === id) { viewingEntryId = null; showView(‘history’); }
 else renderHistory();
-}
+};
 
-function escapeHtml(str) {
-if (!str) return ‘’;
-const div = document.createElement(‘div’);
-div.textContent = str;
-return div.innerHTML;
-}
+})();
 </script>
 
 </body>
