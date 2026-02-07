@@ -42,12 +42,7 @@ color: var(–text);
 min-height: 100vh;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
-opacity: 0;
-transition: opacity 0.2s ease;
 }
-
-/* Show body immediately if fonts already cached or after timeout */
-body.fonts-loaded { opacity: 1; }
 
 /* === HEADER === */
 .app-header {
@@ -1210,18 +1205,6 @@ const [y, m, d] = dateStr.split(’-’);
 const months = [‘Jan’,‘Feb’,‘Mar’,‘Apr’,‘May’,‘Jun’,‘Jul’,‘Aug’,‘Sep’,‘Oct’,‘Nov’,‘Dec’];
 return `${months[parseInt(m) - 1]} ${parseInt(d)}, ${y}`;
 }
-
-// ========= FONT LOADING INSURANCE =========
-// Ensures fonts are loaded on GitHub Pages before rendering
-function showPage() {
-document.body.classList.add(‘fonts-loaded’);
-document.body.style.opacity = ‘1’;
-}
-if (document.fonts && document.fonts.ready) {
-document.fonts.ready.then(showPage);
-}
-// Fallback: show page after 1.5s even if fonts haven’t loaded
-setTimeout(showPage, 1500);
 
 // ========= BOOT =========
 init();
