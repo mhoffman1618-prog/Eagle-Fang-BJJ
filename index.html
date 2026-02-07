@@ -5,11 +5,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>EagleFang BJJ</title>
-<link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a0a0f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Font-face fallback insurance */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
 :root {
 --bg-deep: #0a0a0f;
 --bg-card: #12121c;
@@ -31,12 +36,18 @@
 - { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-font-family: ‘Barlow’, sans-serif;
+font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
 background: var(–bg-deep);
 color: var(–text);
 min-height: 100vh;
 -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+opacity: 0;
+transition: opacity 0.2s ease;
 }
+
+/* Show body immediately if fonts already cached or after timeout */
+body.fonts-loaded { opacity: 1; }
 
 /* === HEADER === */
 .app-header {
@@ -93,7 +104,7 @@ padding: 12px 8px;
 background: var(–bg-card);
 border: 1px solid var(–border);
 color: var(–text-dim);
-font-family: ‘Barlow’, sans-serif;
+font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
 font-size: 0.82rem;
 font-weight: 600;
 letter-spacing: 2px;
@@ -166,7 +177,8 @@ background: var(–bg-input);
 border: 1px solid var(–border);
 border-radius: 8px;
 color: var(–text);
-font-family: ‘Barlow’, sans-serif;
+color-scheme: dark;
+font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
 font-size: 0.95rem;
 transition: border-color 0.25s, box-shadow 0.25s;
 outline: none;
@@ -207,7 +219,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 transition: all 0.2s;
-font-family: ‘Barlow’, sans-serif;
+font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .round-count-btn:hover {
@@ -349,7 +361,7 @@ background: transparent;
 border: 1px solid var(–border);
 color: var(–text-dim);
 border-radius: 6px;
-font-family: ‘Barlow’, sans-serif;
+font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
 font-size: 0.78rem;
 font-weight: 600;
 letter-spacing: 2px;
@@ -369,7 +381,7 @@ background: var(–danger-dim);
 border: 1px solid var(–danger);
 color: var(–danger);
 border-radius: 6px;
-font-family: ‘Barlow’, sans-serif;
+font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
 font-size: 0.78rem;
 font-weight: 600;
 letter-spacing: 2px;
@@ -487,7 +499,7 @@ z-index: 10;
 background: none;
 border: none;
 color: var(–accent);
-font-family: ‘Barlow’, sans-serif;
+font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
 font-size: 0.85rem;
 font-weight: 600;
 cursor: pointer;
@@ -1198,6 +1210,18 @@ const [y, m, d] = dateStr.split(’-’);
 const months = [‘Jan’,‘Feb’,‘Mar’,‘Apr’,‘May’,‘Jun’,‘Jul’,‘Aug’,‘Sep’,‘Oct’,‘Nov’,‘Dec’];
 return `${months[parseInt(m) - 1]} ${parseInt(d)}, ${y}`;
 }
+
+// ========= FONT LOADING INSURANCE =========
+// Ensures fonts are loaded on GitHub Pages before rendering
+function showPage() {
+document.body.classList.add(‘fonts-loaded’);
+document.body.style.opacity = ‘1’;
+}
+if (document.fonts && document.fonts.ready) {
+document.fonts.ready.then(showPage);
+}
+// Fallback: show page after 1.5s even if fonts haven’t loaded
+setTimeout(showPage, 1500);
 
 // ========= BOOT =========
 init();
