@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -33,12 +32,12 @@
 --round-bg: #0f0f18;
 }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
-background: var(–bg-deep);
-color: var(–text);
+font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
+background: var(--bg-deep);
+color: var(--text);
 min-height: 100vh;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
@@ -49,7 +48,7 @@ min-height: 100vh;
 position: sticky;
 top: 0;
 z-index: 100;
-background: linear-gradient(180deg, var(–bg-deep) 0%, var(–bg-deep) 80%, transparent 100%);
+background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-deep) 80%, transparent 100%);
 padding: 20px 20px 30px;
 text-align: center;
 }
@@ -65,15 +64,15 @@ margin-bottom: 4px;
 .eagle-icon {
 width: 68px;
 height: 68px;
-filter: drop-shadow(0 0 12px var(–accent-dim));
+filter: drop-shadow(0 0 12px var(--accent-dim));
 }
 
 .app-title {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 2.6rem;
 letter-spacing: 6px;
-color: var(–accent);
-text-shadow: 0 0 30px var(–accent-dim);
+color: var(--accent);
+text-shadow: 0 0 30px var(--accent-dim);
 line-height: 1;
 }
 
@@ -81,7 +80,7 @@ line-height: 1;
 font-size: 0.72rem;
 letter-spacing: 5px;
 text-transform: uppercase;
-color: var(–text-muted);
+color: var(--text-muted);
 font-weight: 500;
 }
 
@@ -96,10 +95,10 @@ margin-bottom: 20px;
 .tab-btn {
 flex: 1;
 padding: 12px 8px;
-background: var(–bg-card);
-border: 1px solid var(–border);
-color: var(–text-dim);
-font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
+background: var(--bg-card);
+border: 1px solid var(--border);
+color: var(--text-dim);
+font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
 font-size: 0.82rem;
 font-weight: 600;
 letter-spacing: 2px;
@@ -110,13 +109,13 @@ border-radius: 6px;
 }
 
 .tab-btn.active {
-background: var(–accent);
-color: var(–bg-deep);
-border-color: var(–accent);
-box-shadow: 0 4px 20px var(–accent-dim);
+background: var(--accent);
+color: var(--bg-deep);
+border-color: var(--accent);
+box-shadow: 0 4px 20px var(--accent-dim);
 }
 
-.tab-btn:not(.active):hover { background: var(–bg-hover); }
+.tab-btn:not(.active):hover { background: var(--bg-hover); }
 
 .tab-content { display: none; padding: 0 20px 100px; }
 .tab-content.active { display: block; animation: fadeUp 0.35s ease; }
@@ -128,18 +127,18 @@ to { opacity: 1; transform: translateY(0); }
 
 /* === FORM STYLES === */
 .form-section {
-background: var(–bg-card);
-border: 1px solid var(–border);
+background: var(--bg-card);
+border: 1px solid var(--border);
 border-radius: 10px;
 padding: 20px;
 margin-bottom: 16px;
 }
 
 .section-label {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 1.2rem;
 letter-spacing: 3px;
-color: var(–accent);
+color: var(--accent);
 margin-bottom: 14px;
 display: flex;
 align-items: center;
@@ -149,7 +148,7 @@ gap: 10px;
 .section-label .line {
 flex: 1;
 height: 1px;
-background: var(–border);
+background: var(--border);
 }
 
 label {
@@ -158,22 +157,22 @@ font-size: 0.7rem;
 font-weight: 600;
 letter-spacing: 2px;
 text-transform: uppercase;
-color: var(–text-dim);
+color: var(--text-dim);
 margin-bottom: 6px;
 }
 
-input[type=“text”],
-input[type=“date”],
+input[type="text"],
+input[type="date"],
 textarea,
 select {
 width: 100%;
 padding: 12px 14px;
-background: var(–bg-input);
-border: 1px solid var(–border);
+background: var(--bg-input);
+border: 1px solid var(--border);
 border-radius: 8px;
-color: var(–text);
+color: var(--text);
 color-scheme: dark;
-font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
+font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
 font-size: 0.95rem;
 transition: border-color 0.25s, box-shadow 0.25s;
 outline: none;
@@ -181,8 +180,8 @@ margin-bottom: 14px;
 }
 
 input:focus, textarea:focus, select:focus {
-border-color: var(–accent);
-box-shadow: 0 0 0 3px var(–accent-glow);
+border-color: var(--accent);
+box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
 textarea { resize: vertical; min-height: 80px; }
@@ -205,56 +204,56 @@ gap: 10px;
 width: 34px;
 height: 34px;
 border-radius: 50%;
-border: 1px solid var(–border);
-background: var(–bg-input);
-color: var(–accent);
+border: 1px solid var(--border);
+background: var(--bg-input);
+color: var(--accent);
 font-size: 1.2rem;
 cursor: pointer;
 display: flex;
 align-items: center;
 justify-content: center;
 transition: all 0.2s;
-font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
+font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .round-count-btn:hover {
-background: var(–accent);
-color: var(–bg-deep);
-border-color: var(–accent);
+background: var(--accent);
+color: var(--bg-deep);
+border-color: var(--accent);
 }
 
 .round-count-display {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 1.4rem;
-color: var(–text);
+color: var(--text);
 min-width: 24px;
 text-align: center;
 }
 
 .round-card {
-background: var(–round-bg);
-border: 1px solid var(–border);
+background: var(--round-bg);
+border: 1px solid var(--border);
 border-radius: 8px;
 padding: 16px;
 margin-bottom: 10px;
 transition: border-color 0.3s;
 }
 
-.round-card:hover { border-color: var(–accent-dim); }
+.round-card:hover { border-color: var(--accent-dim); }
 
 .round-number {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 1rem;
 letter-spacing: 3px;
-color: var(–accent);
+color: var(--accent);
 margin-bottom: 10px;
 padding-bottom: 8px;
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid var(--border);
 }
 
 /* === PHOTO UPLOAD === */
 .photo-upload-area {
-border: 2px dashed var(–border);
+border: 2px dashed var(--border);
 border-radius: 10px;
 padding: 30px 20px;
 text-align: center;
@@ -265,20 +264,20 @@ overflow: hidden;
 }
 
 .photo-upload-area:hover {
-border-color: var(–accent);
-background: var(–accent-glow);
+border-color: var(--accent);
+background: var(--accent-glow);
 }
 
 .photo-upload-area svg {
 width: 36px;
 height: 36px;
 margin-bottom: 8px;
-color: var(–text-muted);
+color: var(--text-muted);
 }
 
 .photo-upload-area p {
 font-size: 0.82rem;
-color: var(–text-dim);
+color: var(--text-dim);
 }
 
 .photo-upload-area input {
@@ -300,12 +299,12 @@ width: 80px;
 height: 80px;
 border-radius: 8px;
 object-fit: cover;
-border: 2px solid var(–border);
+border: 2px solid var(--border);
 cursor: pointer;
 transition: border-color 0.2s;
 }
 
-.photo-thumb:hover { border-color: var(–accent); }
+.photo-thumb:hover { border-color: var(--accent); }
 
 .photo-thumb-wrapper {
 position: relative;
@@ -318,7 +317,7 @@ right: -6px;
 width: 22px;
 height: 22px;
 border-radius: 50%;
-background: var(–danger);
+background: var(--danger);
 color: white;
 border: none;
 font-size: 0.7rem;
@@ -333,30 +332,30 @@ font-weight: 700;
 .btn-primary {
 width: 100%;
 padding: 16px;
-background: var(–accent);
-color: var(–bg-deep);
+background: var(--accent);
+color: var(--bg-deep);
 border: none;
 border-radius: 8px;
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 1.3rem;
 letter-spacing: 4px;
 cursor: pointer;
 transition: all 0.3s;
-box-shadow: 0 4px 20px var(–accent-dim);
+box-shadow: 0 4px 20px var(--accent-dim);
 }
 
 .btn-primary:hover {
 transform: translateY(-2px);
-box-shadow: 0 8px 30px var(–accent-dim);
+box-shadow: 0 8px 30px var(--accent-dim);
 }
 
 .btn-secondary {
 padding: 10px 20px;
 background: transparent;
-border: 1px solid var(–border);
-color: var(–text-dim);
+border: 1px solid var(--border);
+color: var(--text-dim);
 border-radius: 6px;
-font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
+font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
 font-size: 0.78rem;
 font-weight: 600;
 letter-spacing: 2px;
@@ -366,17 +365,17 @@ transition: all 0.2s;
 }
 
 .btn-secondary:hover {
-border-color: var(–accent);
-color: var(–accent);
+border-color: var(--accent);
+color: var(--accent);
 }
 
 .btn-danger {
 padding: 10px 20px;
-background: var(–danger-dim);
-border: 1px solid var(–danger);
-color: var(–danger);
+background: var(--danger-dim);
+border: 1px solid var(--danger);
+color: var(--danger);
 border-radius: 6px;
-font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
+font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
 font-size: 0.78rem;
 font-weight: 600;
 letter-spacing: 2px;
@@ -385,13 +384,13 @@ cursor: pointer;
 transition: all 0.2s;
 }
 
-.btn-danger:hover { background: var(–danger); color: white; }
+.btn-danger:hover { background: var(--danger); color: white; }
 
 /* === ENTRIES LIST === */
 .entries-empty {
 text-align: center;
 padding: 60px 20px;
-color: var(–text-muted);
+color: var(--text-muted);
 }
 
 .entries-empty svg {
@@ -404,8 +403,8 @@ opacity: 0.3;
 .entries-empty p { font-size: 0.9rem; }
 
 .entry-card {
-background: var(–bg-card);
-border: 1px solid var(–border);
+background: var(--bg-card);
+border: 1px solid var(--border);
 border-radius: 10px;
 padding: 18px;
 margin-bottom: 12px;
@@ -414,7 +413,7 @@ transition: all 0.25s;
 }
 
 .entry-card:hover {
-border-color: var(–accent-dim);
+border-color: var(--accent-dim);
 transform: translateY(-2px);
 box-shadow: 0 6px 24px rgba(0,0,0,0.3);
 }
@@ -427,16 +426,16 @@ margin-bottom: 10px;
 }
 
 .entry-date {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 1.2rem;
 letter-spacing: 2px;
-color: var(–accent);
+color: var(--accent);
 }
 
 .entry-rounds-badge {
-background: var(–accent-glow);
-border: 1px solid var(–accent-dim);
-color: var(–accent);
+background: var(--accent-glow);
+border: 1px solid var(--accent-dim);
+color: var(--accent);
 font-size: 0.7rem;
 font-weight: 700;
 letter-spacing: 1px;
@@ -446,20 +445,20 @@ border-radius: 20px;
 
 .entry-instructor {
 font-size: 0.85rem;
-color: var(–text-dim);
+color: var(--text-dim);
 margin-bottom: 6px;
 }
 
 .entry-technique {
 font-size: 0.95rem;
 font-weight: 500;
-color: var(–text);
+color: var(--text);
 }
 
 .entry-photos-indicator {
 margin-top: 8px;
 font-size: 0.72rem;
-color: var(–text-muted);
+color: var(--text-muted);
 display: flex;
 align-items: center;
 gap: 4px;
@@ -469,7 +468,7 @@ gap: 4px;
 .detail-overlay {
 position: fixed;
 inset: 0;
-background: var(–bg-deep);
+background: var(--bg-deep);
 z-index: 200;
 overflow-y: auto;
 display: none;
@@ -481,20 +480,20 @@ animation: fadeUp 0.3s ease;
 .detail-header {
 position: sticky;
 top: 0;
-background: var(–bg-deep);
+background: var(--bg-deep);
 padding: 16px 20px;
 display: flex;
 justify-content: space-between;
 align-items: center;
-border-bottom: 1px solid var(–border);
+border-bottom: 1px solid var(--border);
 z-index: 10;
 }
 
 .detail-back {
 background: none;
 border: none;
-color: var(–accent);
-font-family: ‘Barlow’, -apple-system, BlinkMacSystemFont, sans-serif;
+color: var(--accent);
+font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
 font-size: 0.85rem;
 font-weight: 600;
 cursor: pointer;
@@ -509,24 +508,24 @@ letter-spacing: 1px;
 .detail-body { padding: 20px 20px 80px; }
 
 .detail-date {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 2rem;
 letter-spacing: 3px;
-color: var(–accent);
+color: var(--accent);
 margin-bottom: 4px;
 }
 
 .detail-section {
 margin-top: 24px;
 padding-top: 20px;
-border-top: 1px solid var(–border);
+border-top: 1px solid var(--border);
 }
 
 .detail-section-title {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 1.1rem;
 letter-spacing: 3px;
-color: var(–accent);
+color: var(--accent);
 margin-bottom: 12px;
 }
 
@@ -535,21 +534,21 @@ font-size: 0.7rem;
 font-weight: 600;
 letter-spacing: 2px;
 text-transform: uppercase;
-color: var(–text-muted);
+color: var(--text-muted);
 margin-bottom: 4px;
 }
 
 .detail-field-value {
 font-size: 0.95rem;
-color: var(–text);
+color: var(--text);
 margin-bottom: 14px;
 line-height: 1.6;
 white-space: pre-wrap;
 }
 
 .detail-round-card {
-background: var(–round-bg);
-border: 1px solid var(–border);
+background: var(--round-bg);
+border: 1px solid var(--border);
 border-radius: 8px;
 padding: 14px;
 margin-bottom: 8px;
@@ -566,7 +565,7 @@ width: 100px;
 height: 100px;
 border-radius: 8px;
 object-fit: cover;
-border: 2px solid var(–border);
+border: 2px solid var(--border);
 cursor: pointer;
 transition: transform 0.2s;
 }
@@ -607,8 +606,8 @@ justify-content: center;
 .confirm-overlay.active { display: flex; }
 
 .confirm-box {
-background: var(–bg-card);
-border: 1px solid var(–border);
+background: var(--bg-card);
+border: 1px solid var(--border);
 border-radius: 12px;
 padding: 28px;
 max-width: 340px;
@@ -616,16 +615,16 @@ text-align: center;
 }
 
 .confirm-box h3 {
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 1.3rem;
 letter-spacing: 3px;
-color: var(–danger);
+color: var(--danger);
 margin-bottom: 10px;
 }
 
 .confirm-box p {
 font-size: 0.88rem;
-color: var(–text-dim);
+color: var(--text-dim);
 margin-bottom: 22px;
 }
 
@@ -638,8 +637,8 @@ position: fixed;
 bottom: 30px;
 left: 50%;
 transform: translateX(-50%) translateY(80px);
-background: var(–success);
-color: var(–bg-deep);
+background: var(--success);
+color: var(--bg-deep);
 padding: 12px 28px;
 border-radius: 30px;
 font-weight: 600;
@@ -670,7 +669,7 @@ top: 50%;
 transform: translateY(-50%);
 width: 18px;
 height: 18px;
-color: var(–text-muted);
+color: var(--text-muted);
 }
 
 /* === RESPONSIVE === */
@@ -679,12 +678,10 @@ color: var(–text-muted);
 .tab-bar { max-width: 600px; margin: 0 auto 20px; }
 }
 </style>
-
 </head>
 <body>
 
 <!-- HEADER -->
-
 <div class="app-header">
 <div class="logo-lockup">
 <svg class="eagle-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -762,18 +759,15 @@ color: var(–text-muted);
 </div>
 
 <!-- TABS -->
-
 <div class="tab-bar">
 <button class="tab-btn active" onclick="switchTab('new')">New Entry</button>
 <button class="tab-btn" onclick="switchTab('entries')">My Entries</button>
 </div>
 
 <!-- NEW ENTRY TAB -->
-
 <div id="tab-new" class="tab-content active">
 
 <!-- Date & Instructor -->
-
 <div class="form-section">
 <div class="section-label">Session Info <span class="line"></span></div>
 <label for="entry-date">Date</label>
@@ -783,7 +777,6 @@ color: var(–text-muted);
 </div>
 
 <!-- Technique -->
-
 <div class="form-section">
 <div class="section-label">Technique Covered <span class="line"></span></div>
 <label for="entry-technique">Technique Name</label>
@@ -793,7 +786,6 @@ color: var(–text-muted);
 </div>
 
 <!-- Training Rounds -->
-
 <div class="form-section">
 <div class="rounds-header">
 <div class="section-label" style="margin-bottom:0">Training Rounds <span class="line"></span></div>
@@ -807,7 +799,6 @@ color: var(–text-muted);
 </div>
 
 <!-- Photo Upload -->
-
 <div class="form-section">
 <div class="section-label">Photos <span class="line"></span></div>
 <div class="photo-upload-area" id="photo-upload-area">
@@ -822,11 +813,9 @@ color: var(–text-muted);
 </div>
 
 <button class="btn-primary" id="save-btn" onclick="saveEntry()">Save Entry</button>
-
 </div>
 
 <!-- ENTRIES TAB -->
-
 <div id="tab-entries" class="tab-content">
 <div class="search-bar">
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -838,7 +827,6 @@ color: var(–text-muted);
 </div>
 
 <!-- DETAIL OVERLAY -->
-
 <div class="detail-overlay" id="detail-overlay">
 <div class="detail-header">
 <button class="detail-back" onclick="closeDetail()">
@@ -853,13 +841,11 @@ color: var(–text-muted);
 </div>
 
 <!-- LIGHTBOX -->
-
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
 <img id="lightbox-img" src="" alt="Full photo">
 </div>
 
 <!-- CONFIRM DIALOG -->
-
 <div class="confirm-overlay" id="confirm-overlay">
 <div class="confirm-box">
 <h3>Delete Entry?</h3>
@@ -872,7 +858,6 @@ color: var(–text-muted);
 </div>
 
 <!-- TOAST -->
-
 <div class="toast" id="toast"></div>
 
 <script>
@@ -933,12 +918,8 @@ c.innerHTML += `
 <input type="text" class="round-partner" placeholder="Partner's name" value="${esc(prev.partner)}">
 <label>Round Notes</label>
 <textarea class="round-notes" rows="2" placeholder="What happened this round...">${esc(prev.notes)}</textarea>
-
-```
 </div>`;
 }
-```
-
 }
 
 // ========= PHOTOS =========
@@ -952,12 +933,16 @@ renderPhotoThumbs();
 };
 reader.readAsDataURL(file);
 });
-e.target.value = ‘’;
+e.target.value = '';
 }
 
 function renderPhotoThumbs() {
-const c = document.getElementById(‘photo-previews’);
-c.innerHTML = photos.map((p, i) => ` <div class="photo-thumb-wrapper"> <img class="photo-thumb" src="${p}" onclick="openLightbox('${p.replace(/'/g, "\\'")}')"> <button class="photo-remove" onclick="removePhoto(${i})">✕</button> </div>`).join(’’);
+const c = document.getElementById('photo-previews');
+c.innerHTML = photos.map((p, i) => `
+<div class="photo-thumb-wrapper">
+<img class="photo-thumb" src="${p}" onclick="openLightbox('${p.replace(/'/g, "\\'")}')">
+<button class="photo-remove" onclick="removePhoto(${i})">✕</button>
+</div>`).join('');
 }
 
 function removePhoto(i) {
@@ -967,12 +952,11 @@ renderPhotoThumbs();
 
 // ========= SAVE =========
 function saveEntry() {
-const date = document.getElementById(‘entry-date’).value;
-const instructor = document.getElementById(‘entry-instructor’).value.trim();
-const technique = document.getElementById(‘entry-technique’).value.trim();
-const techniqueNotes = document.getElementById(‘entry-technique-notes’).value.trim();
+const date = document.getElementById('entry-date').value;
+const instructor = document.getElementById('entry-instructor').value.trim();
+const technique = document.getElementById('entry-technique').value.trim();
+const techniqueNotes = document.getElementById('entry-technique-notes').value.trim();
 
-```
 if (!date) { showToast('Please select a date'); return; }
 
 const rounds = [];
@@ -1004,34 +988,31 @@ localStorage.setItem('eaglefang_entries', JSON.stringify(entries));
 showToast(editingId ? 'Entry updated!' : 'Entry saved!');
 clearForm();
 switchTab('entries');
-```
-
 }
 
 function clearForm() {
-document.getElementById(‘entry-date’).value = new Date().toISOString().split(‘T’)[0];
-document.getElementById(‘entry-instructor’).value = ‘’;
-document.getElementById(‘entry-technique’).value = ‘’;
-document.getElementById(‘entry-technique-notes’).value = ‘’;
+document.getElementById('entry-date').value = new Date().toISOString().split('T')[0];
+document.getElementById('entry-instructor').value = '';
+document.getElementById('entry-technique').value = '';
+document.getElementById('entry-technique-notes').value = '';
 roundCount = 5;
-document.getElementById(‘round-count-display’).textContent = 5;
+document.getElementById('round-count-display').textContent = 5;
 photos = [];
 renderPhotoThumbs();
 renderRounds();
 editingId = null;
-document.getElementById(‘save-btn’).textContent = ‘Save Entry’;
+document.getElementById('save-btn').textContent = 'Save Entry';
 }
 
 // ========= ENTRIES LIST =========
 function renderEntries() {
-const q = document.getElementById(‘search-input’).value.toLowerCase();
+const q = document.getElementById('search-input').value.toLowerCase();
 const filtered = entries.filter(e => {
 if (!q) return true;
-return (e.date + e.instructor + e.technique + e.techniqueNotes +
-e.rounds.map(r => r.partner + r.notes).join(’’)).toLowerCase().includes(q);
+return (e.date + e.instructor + e.technique + e.techniqueNotes + 
+e.rounds.map(r => r.partner + r.notes).join('')).toLowerCase().includes(q);
 });
 
-```
 const c = document.getElementById('entries-list');
 if (filtered.length === 0) {
 c.innerHTML = `
@@ -1058,8 +1039,6 @@ ${e.technique ? `<div class="entry-technique">${esc(e.technique)}</div>` : ''}
 ${e.photos && e.photos.length ? `<div class="entry-photos-indicator">📷 ${e.photos.length} photo${e.photos.length > 1 ? 's' : ''}</div>` : ''}
 </div>`;
 }).join('');
-```
-
 }
 
 // ========= DETAIL VIEW =========
@@ -1068,7 +1047,6 @@ currentViewId = id;
 const e = entries.find(x => x.id === id);
 if (!e) return;
 
-```
 let html = `<div class="detail-date">${formatDate(e.date)}</div>`;
 
 if (e.instructor) {
@@ -1112,12 +1090,10 @@ ${e.photos.map(p => `<img class="detail-photo" src="${p}" onclick="openLightbox(
 
 document.getElementById('detail-body').innerHTML = html;
 document.getElementById('detail-overlay').classList.add('active');
-```
-
 }
 
 function closeDetail() {
-document.getElementById(‘detail-overlay’).classList.remove(‘active’);
+document.getElementById('detail-overlay').classList.remove('active');
 currentViewId = null;
 }
 
@@ -1127,7 +1103,6 @@ const e = entries.find(x => x.id === currentViewId);
 if (!e) return;
 closeDetail();
 
-```
 editingId = e.id;
 document.getElementById('entry-date').value = e.date;
 document.getElementById('entry-instructor').value = e.instructor;
@@ -1153,62 +1128,59 @@ renderPhotoThumbs();
 document.getElementById('save-btn').textContent = 'Update Entry';
 switchTab('new');
 window.scrollTo({ top: 0, behavior: 'smooth' });
-```
-
 }
 
 // ========= DELETE =========
 function confirmDelete() {
-document.getElementById(‘confirm-overlay’).classList.add(‘active’);
+document.getElementById('confirm-overlay').classList.add('active');
 }
 
 function closeConfirm() {
-document.getElementById(‘confirm-overlay’).classList.remove(‘active’);
+document.getElementById('confirm-overlay').classList.remove('active');
 }
 
 function deleteEntry() {
 entries = entries.filter(e => e.id !== currentViewId);
-localStorage.setItem(‘eaglefang_entries’, JSON.stringify(entries));
+localStorage.setItem('eaglefang_entries', JSON.stringify(entries));
 closeConfirm();
 closeDetail();
 renderEntries();
-showToast(‘Entry deleted’);
+showToast('Entry deleted');
 }
 
 // ========= LIGHTBOX =========
 function openLightbox(src) {
-document.getElementById(‘lightbox-img’).src = src;
-document.getElementById(‘lightbox’).classList.add(‘active’);
+document.getElementById('lightbox-img').src = src;
+document.getElementById('lightbox').classList.add('active');
 }
 
 function closeLightbox() {
-document.getElementById(‘lightbox’).classList.remove(‘active’);
+document.getElementById('lightbox').classList.remove('active');
 }
 
 // ========= TOAST =========
 function showToast(msg) {
-const t = document.getElementById(‘toast’);
+const t = document.getElementById('toast');
 t.textContent = msg;
-t.classList.add(‘show’);
-setTimeout(() => t.classList.remove(‘show’), 2400);
+t.classList.add('show');
+setTimeout(() => t.classList.remove('show'), 2400);
 }
 
 // ========= UTILS =========
 function esc(str) {
-const d = document.createElement(‘div’);
-d.textContent = str || ‘’;
+const d = document.createElement('div');
+d.textContent = str || '';
 return d.innerHTML;
 }
 
 function formatDate(dateStr) {
-const [y, m, d] = dateStr.split(’-’);
-const months = [‘Jan’,‘Feb’,‘Mar’,‘Apr’,‘May’,‘Jun’,‘Jul’,‘Aug’,‘Sep’,‘Oct’,‘Nov’,‘Dec’];
+const [y, m, d] = dateStr.split('-');
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 return `${months[parseInt(m) - 1]} ${parseInt(d)}, ${y}`;
 }
 
 // ========= BOOT =========
 init();
 </script>
-
 </body>
 </html>
