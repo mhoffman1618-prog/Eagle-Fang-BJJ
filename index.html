@@ -2,1185 +2,613 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>EagleFang BJJ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Lorena's Card Tracker</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0a0a0f">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#1a1a2e">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-/* Font-face fallback insurance */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
 :root {
---bg-deep: #0a0a0f;
---bg-card: #12121c;
---bg-input: #1a1a2a;
---bg-hover: #1e1e30;
---accent: #e6a919;
---accent-dim: #b8871480;
---accent-glow: #e6a91930;
---text: #e8e6e1;
---text-dim: #8a8896;
---text-muted: #5a5868;
---border: #2a2a3a;
---danger: #e63946;
---danger-dim: #e6394630;
---success: #2ec46a;
---round-bg: #0f0f18;
+--bg-deep: #0f0f1a;
+--bg-card: #1a1a2e;
+--bg-input: #16213e;
+--accent: #e94560;
+--accent-soft: rgba(233,69,96,0.2);
+--text-primary: #eaeaea;
+--text-secondary: #a0a0b8;
+--text-muted: #6c6c80;
+--border: #2a2a45;
+--success: #4ecca3;
+--gold: #f0c27f;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
-background: var(--bg-deep);
-color: var(--text);
+font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+background-color: #0f0f1a;
+color: #eaeaea;
 min-height: 100vh;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
 }
 
-/* === HEADER === */
-.app-header {
-position: sticky;
-top: 0;
-z-index: 100;
-background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-deep) 80%, transparent 100%);
-padding: 20px 20px 30px;
-text-align: center;
+.container {
+max-width: 600px;
+margin: 0 auto;
+padding: 20px 16px 100px 16px;
 }
 
-.logo-lockup {
+.header {
 display: flex;
 align-items: center;
 justify-content: center;
 gap: 14px;
-margin-bottom: 4px;
+margin-bottom: 32px;
+padding: 24px 0 20px 0;
+border-bottom: 1px solid #2a2a45;
 }
 
-.eagle-icon {
-width: 68px;
-height: 68px;
-filter: drop-shadow(0 0 12px var(--accent-dim));
+.logo-icon {
+width: 48px;
+height: 48px;
+flex-shrink: 0;
 }
 
-.app-title {
-font-family: 'Bebas Neue', sans-serif;
-font-size: 2.6rem;
-letter-spacing: 6px;
-color: var(--accent);
-text-shadow: 0 0 30px var(--accent-dim);
-line-height: 1;
+.header h1 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.75rem;
+font-weight: 700;
+background: linear-gradient(135deg, #e94560, #f0c27f);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+color: #e94560;
 }
 
-.app-subtitle {
-font-size: 0.72rem;
-letter-spacing: 5px;
-text-transform: uppercase;
-color: var(--text-muted);
-font-weight: 500;
-}
-
-/* === TABS === */
-.tab-bar {
-display: flex;
-gap: 4px;
-padding: 0 20px;
-margin-bottom: 20px;
-}
-
-.tab-btn {
-flex: 1;
-padding: 12px 8px;
-background: var(--bg-card);
-border: 1px solid var(--border);
-color: var(--text-dim);
-font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
-font-size: 0.82rem;
-font-weight: 600;
-letter-spacing: 2px;
-text-transform: uppercase;
-cursor: pointer;
-transition: all 0.3s;
-border-radius: 6px;
-}
-
-.tab-btn.active {
-background: var(--accent);
-color: var(--bg-deep);
-border-color: var(--accent);
-box-shadow: 0 4px 20px var(--accent-dim);
-}
-
-.tab-btn:not(.active):hover { background: var(--bg-hover); }
-
-.tab-content { display: none; padding: 0 20px 100px; }
-.tab-content.active { display: block; animation: fadeUp 0.35s ease; }
-
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(12px); }
-to { opacity: 1; transform: translateY(0); }
-}
-
-/* === FORM STYLES === */
 .form-section {
-background: var(--bg-card);
-border: 1px solid var(--border);
-border-radius: 10px;
-padding: 20px;
-margin-bottom: 16px;
+background-color: #1a1a2e;
+border-radius: 16px;
+padding: 24px 20px;
+border: 1px solid #2a2a45;
+box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+margin-bottom: 28px;
 }
 
-.section-label {
-font-family: 'Bebas Neue', sans-serif;
-font-size: 1.2rem;
-letter-spacing: 3px;
-color: var(--accent);
-margin-bottom: 14px;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.section-label .line {
-flex: 1;
-height: 1px;
-background: var(--border);
-}
-
-label {
-display: block;
-font-size: 0.7rem;
-font-weight: 600;
-letter-spacing: 2px;
+.form-section h2 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.1rem;
+color: #a0a0b8;
+margin-bottom: 20px;
+font-weight: 400;
+letter-spacing: 1px;
 text-transform: uppercase;
-color: var(--text-dim);
-margin-bottom: 6px;
 }
 
-input[type="text"],
-input[type="date"],
-textarea,
-select {
+.field {
+margin-bottom: 18px;
+}
+
+.field label {
+display: block;
+font-size: 0.8rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1.2px;
+color: #6c6c80;
+margin-bottom: 8px;
+}
+
+.field input[type="text"],
+.field input[type="date"] {
 width: 100%;
-padding: 12px 14px;
-background: var(--bg-input);
-border: 1px solid var(--border);
-border-radius: 8px;
-color: var(--text);
-color-scheme: dark;
-font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
-font-size: 0.95rem;
-transition: border-color 0.25s, box-shadow 0.25s;
-outline: none;
-margin-bottom: 14px;
-}
-
-input:focus, textarea:focus, select:focus {
-border-color: var(--accent);
-box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
-textarea { resize: vertical; min-height: 80px; }
-
-/* === ROUNDS === */
-.rounds-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 14px;
-}
-
-.round-count-controls {
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.round-count-btn {
-width: 34px;
-height: 34px;
-border-radius: 50%;
-border: 1px solid var(--border);
-background: var(--bg-input);
-color: var(--accent);
-font-size: 1.2rem;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-transition: all 0.2s;
-font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.round-count-btn:hover {
-background: var(--accent);
-color: var(--bg-deep);
-border-color: var(--accent);
-}
-
-.round-count-display {
-font-family: 'Bebas Neue', sans-serif;
-font-size: 1.4rem;
-color: var(--text);
-min-width: 24px;
-text-align: center;
-}
-
-.round-card {
-background: var(--round-bg);
-border: 1px solid var(--border);
-border-radius: 8px;
-padding: 16px;
-margin-bottom: 10px;
-transition: border-color 0.3s;
-}
-
-.round-card:hover { border-color: var(--accent-dim); }
-
-.round-number {
-font-family: 'Bebas Neue', sans-serif;
-font-size: 1rem;
-letter-spacing: 3px;
-color: var(--accent);
-margin-bottom: 10px;
-padding-bottom: 8px;
-border-bottom: 1px solid var(--border);
-}
-
-/* === PHOTO UPLOAD === */
-.photo-upload-area {
-border: 2px dashed var(--border);
+padding: 12px 16px;
+background-color: #16213e;
+border: 1px solid #2a2a45;
 border-radius: 10px;
-padding: 30px 20px;
+color: #eaeaea;
+font-family: 'Nunito', sans-serif;
+font-size: 1rem;
+}
+
+.field input[type="text"]:focus,
+.field input[type="date"]:focus {
+outline: none;
+border-color: #e94560;
+box-shadow: 0 0 0 3px rgba(233,69,96,0.2);
+}
+
+.field input[type="date"]::-webkit-calendar-picker-indicator {
+filter: invert(0.7);
+cursor: pointer;
+}
+
+.photo-upload-area {
+border: 2px dashed #2a2a45;
+border-radius: 12px;
+padding: 24px;
 text-align: center;
 cursor: pointer;
-transition: all 0.3s;
 position: relative;
 overflow: hidden;
 }
 
 .photo-upload-area:hover {
-border-color: var(--accent);
-background: var(--accent-glow);
+border-color: #e94560;
+background-color: rgba(233,69,96,0.1);
 }
 
-.photo-upload-area svg {
-width: 36px;
-height: 36px;
-margin-bottom: 8px;
-color: var(--text-muted);
+.photo-upload-area.has-photo {
+padding: 0;
+border-style: solid;
+border-color: #4ecca3;
 }
 
-.photo-upload-area p {
-font-size: 0.82rem;
-color: var(--text-dim);
-}
-
-.photo-upload-area input {
+.photo-upload-area input[type="file"] {
 position: absolute;
-inset: 0;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+height: 100%;
 opacity: 0;
 cursor: pointer;
 }
 
-.photo-previews {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-margin-top: 12px;
-}
-
-.photo-thumb {
-width: 80px;
-height: 80px;
-border-radius: 8px;
-object-fit: cover;
-border: 2px solid var(--border);
-cursor: pointer;
-transition: border-color 0.2s;
-}
-
-.photo-thumb:hover { border-color: var(--accent); }
-
-.photo-thumb-wrapper {
-position: relative;
-}
-
-.photo-remove {
-position: absolute;
-top: -6px;
-right: -6px;
-width: 22px;
-height: 22px;
-border-radius: 50%;
-background: var(--danger);
-color: white;
-border: none;
-font-size: 0.7rem;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-font-weight: 700;
-}
-
-/* === BUTTONS === */
-.btn-primary {
-width: 100%;
-padding: 16px;
-background: var(--accent);
-color: var(--bg-deep);
-border: none;
-border-radius: 8px;
-font-family: 'Bebas Neue', sans-serif;
-font-size: 1.3rem;
-letter-spacing: 4px;
-cursor: pointer;
-transition: all 0.3s;
-box-shadow: 0 4px 20px var(--accent-dim);
-}
-
-.btn-primary:hover {
-transform: translateY(-2px);
-box-shadow: 0 8px 30px var(--accent-dim);
-}
-
-.btn-secondary {
-padding: 10px 20px;
-background: transparent;
-border: 1px solid var(--border);
-color: var(--text-dim);
-border-radius: 6px;
-font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
-font-size: 0.78rem;
-font-weight: 600;
-letter-spacing: 2px;
-text-transform: uppercase;
-cursor: pointer;
-transition: all 0.2s;
-}
-
-.btn-secondary:hover {
-border-color: var(--accent);
-color: var(--accent);
-}
-
-.btn-danger {
-padding: 10px 20px;
-background: var(--danger-dim);
-border: 1px solid var(--danger);
-color: var(--danger);
-border-radius: 6px;
-font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
-font-size: 0.78rem;
-font-weight: 600;
-letter-spacing: 2px;
-text-transform: uppercase;
-cursor: pointer;
-transition: all 0.2s;
-}
-
-.btn-danger:hover { background: var(--danger); color: white; }
-
-/* === ENTRIES LIST === */
-.entries-empty {
-text-align: center;
-padding: 60px 20px;
-color: var(--text-muted);
-}
-
-.entries-empty svg {
-width: 60px;
-height: 60px;
-margin-bottom: 16px;
-opacity: 0.3;
-}
-
-.entries-empty p { font-size: 0.9rem; }
-
-.entry-card {
-background: var(--bg-card);
-border: 1px solid var(--border);
-border-radius: 10px;
-padding: 18px;
-margin-bottom: 12px;
-cursor: pointer;
-transition: all 0.25s;
-}
-
-.entry-card:hover {
-border-color: var(--accent-dim);
-transform: translateY(-2px);
-box-shadow: 0 6px 24px rgba(0,0,0,0.3);
-}
-
-.entry-card-header {
-display: flex;
-justify-content: space-between;
-align-items: flex-start;
-margin-bottom: 10px;
-}
-
-.entry-date {
-font-family: 'Bebas Neue', sans-serif;
-font-size: 1.2rem;
-letter-spacing: 2px;
-color: var(--accent);
-}
-
-.entry-rounds-badge {
-background: var(--accent-glow);
-border: 1px solid var(--accent-dim);
-color: var(--accent);
-font-size: 0.7rem;
-font-weight: 700;
-letter-spacing: 1px;
-padding: 4px 10px;
-border-radius: 20px;
-}
-
-.entry-instructor {
-font-size: 0.85rem;
-color: var(--text-dim);
-margin-bottom: 6px;
-}
-
-.entry-technique {
-font-size: 0.95rem;
-font-weight: 500;
-color: var(--text);
-}
-
-.entry-photos-indicator {
-margin-top: 8px;
-font-size: 0.72rem;
-color: var(--text-muted);
-display: flex;
-align-items: center;
-gap: 4px;
-}
-
-/* === DETAIL VIEW === */
-.detail-overlay {
-position: fixed;
-inset: 0;
-background: var(--bg-deep);
-z-index: 200;
-overflow-y: auto;
-display: none;
-animation: fadeUp 0.3s ease;
-}
-
-.detail-overlay.active { display: block; }
-
-.detail-header {
-position: sticky;
-top: 0;
-background: var(--bg-deep);
-padding: 16px 20px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-border-bottom: 1px solid var(--border);
-z-index: 10;
-}
-
-.detail-back {
-background: none;
-border: none;
-color: var(--accent);
-font-family: 'Barlow', -apple-system, BlinkMacSystemFont, sans-serif;
-font-size: 0.85rem;
-font-weight: 600;
-cursor: pointer;
-display: flex;
-align-items: center;
-gap: 6px;
-letter-spacing: 1px;
-}
-
-.detail-actions { display: flex; gap: 8px; }
-
-.detail-body { padding: 20px 20px 80px; }
-
-.detail-date {
-font-family: 'Bebas Neue', sans-serif;
-font-size: 2rem;
-letter-spacing: 3px;
-color: var(--accent);
-margin-bottom: 4px;
-}
-
-.detail-section {
-margin-top: 24px;
-padding-top: 20px;
-border-top: 1px solid var(--border);
-}
-
-.detail-section-title {
-font-family: 'Bebas Neue', sans-serif;
-font-size: 1.1rem;
-letter-spacing: 3px;
-color: var(--accent);
-margin-bottom: 12px;
-}
-
-.detail-field-label {
-font-size: 0.7rem;
-font-weight: 600;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(--text-muted);
-margin-bottom: 4px;
-}
-
-.detail-field-value {
-font-size: 0.95rem;
-color: var(--text);
-margin-bottom: 14px;
-line-height: 1.6;
-white-space: pre-wrap;
-}
-
-.detail-round-card {
-background: var(--round-bg);
-border: 1px solid var(--border);
-border-radius: 8px;
-padding: 14px;
+.upload-placeholder svg {
+width: 36px;
+height: 36px;
+stroke: #6c6c80;
 margin-bottom: 8px;
 }
 
-.detail-photos {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-}
-
-.detail-photo {
-width: 100px;
-height: 100px;
-border-radius: 8px;
-object-fit: cover;
-border: 2px solid var(--border);
-cursor: pointer;
-transition: transform 0.2s;
-}
-
-.detail-photo:hover { transform: scale(1.05); }
-
-/* === LIGHTBOX === */
-.lightbox {
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,0.95);
-z-index: 500;
-display: none;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-}
-
-.lightbox.active { display: flex; }
-
-.lightbox img {
-max-width: 95vw;
-max-height: 90vh;
-border-radius: 8px;
-}
-
-/* === CONFIRM DIALOG === */
-.confirm-overlay {
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,0.7);
-z-index: 300;
-display: none;
-align-items: center;
-justify-content: center;
-}
-
-.confirm-overlay.active { display: flex; }
-
-.confirm-box {
-background: var(--bg-card);
-border: 1px solid var(--border);
-border-radius: 12px;
-padding: 28px;
-max-width: 340px;
-text-align: center;
-}
-
-.confirm-box h3 {
-font-family: 'Bebas Neue', sans-serif;
-font-size: 1.3rem;
-letter-spacing: 3px;
-color: var(--danger);
-margin-bottom: 10px;
-}
-
-.confirm-box p {
-font-size: 0.88rem;
-color: var(--text-dim);
-margin-bottom: 22px;
-}
-
-.confirm-btns { display: flex; gap: 10px; }
-.confirm-btns button { flex: 1; }
-
-/* === TOAST === */
-.toast {
-position: fixed;
-bottom: 30px;
-left: 50%;
-transform: translateX(-50%) translateY(80px);
-background: var(--success);
-color: var(--bg-deep);
-padding: 12px 28px;
-border-radius: 30px;
-font-weight: 600;
+.upload-placeholder p {
+color: #6c6c80;
 font-size: 0.85rem;
-letter-spacing: 1px;
-z-index: 400;
-transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-pointer-events: none;
 }
 
-.toast.show { transform: translateX(-50%) translateY(0); }
+.photo-preview {
+width: 100%;
+max-height: 200px;
+object-fit: cover;
+border-radius: 10px;
+display: none;
+}
 
-/* === SEARCH === */
+.photo-upload-area.has-photo .upload-placeholder { display: none; }
+.photo-upload-area.has-photo .photo-preview { display: block; }
+
+.btn-save {
+width: 100%;
+padding: 14px;
+background: linear-gradient(135deg, #e94560, #c0392b);
+color: #ffffff;
+border: none;
+border-radius: 12px;
+font-family: 'Nunito', sans-serif;
+font-size: 1rem;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+cursor: pointer;
+margin-top: 20px;
+box-shadow: 0 4px 20px rgba(233,69,96,0.3);
+}
+
+.btn-save:active {
+transform: scale(0.97);
+}
+
+.cards-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 16px;
+}
+
+.cards-header h2 {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.2rem;
+font-weight: 600;
+color: #eaeaea;
+}
+
+.card-count {
+font-size: 0.8rem;
+color: #6c6c80;
+background-color: #16213e;
+padding: 4px 12px;
+border-radius: 20px;
+border: 1px solid #2a2a45;
+}
+
 .search-bar {
 margin-bottom: 16px;
 position: relative;
 }
 
-.search-bar input {
-padding-left: 42px;
-margin-bottom: 0;
-}
-
-.search-bar svg {
+.search-bar .search-icon {
 position: absolute;
-left: 14px;
+left: 12px;
 top: 50%;
 transform: translateY(-50%);
 width: 18px;
 height: 18px;
-color: var(--text-muted);
+stroke: #6c6c80;
+pointer-events: none;
 }
 
-/* === RESPONSIVE === */
-@media (min-width: 600px) {
-.tab-content { max-width: 600px; margin: 0 auto; }
-.tab-bar { max-width: 600px; margin: 0 auto 20px; }
+.search-bar input {
+width: 100%;
+padding: 10px 16px 10px 40px;
+background-color: #1a1a2e;
+border: 1px solid #2a2a45;
+border-radius: 10px;
+color: #eaeaea;
+font-family: 'Nunito', sans-serif;
+font-size: 0.9rem;
+}
+
+.search-bar input:focus {
+outline: none;
+border-color: #e94560;
+}
+
+.empty-state {
+text-align: center;
+padding: 48px 20px;
+color: #6c6c80;
+}
+
+.empty-state svg {
+width: 56px;
+height: 56px;
+stroke: #2a2a45;
+margin-bottom: 16px;
+}
+
+.empty-state p {
+font-size: 0.95rem;
+}
+
+.card-entry {
+background-color: #1a1a2e;
+border: 1px solid #2a2a45;
+border-radius: 14px;
+overflow: hidden;
+margin-bottom: 14px;
+box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+
+.card-entry-photo {
+width: 100%;
+height: 180px;
+object-fit: cover;
+display: block;
+}
+
+.card-entry-info {
+padding: 16px 18px;
+}
+
+.card-entry-info .sent-to {
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.15rem;
+font-weight: 600;
+color: #eaeaea;
+margin-bottom: 6px;
+}
+
+.card-entry-info .occasion-badge {
+display: inline-block;
+background-color: rgba(233,69,96,0.2);
+color: #e94560;
+font-size: 0.75rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 1px;
+padding: 3px 10px;
+border-radius: 6px;
+margin-bottom: 8px;
+}
+
+.card-entry-info .date-line {
+font-size: 0.82rem;
+color: #6c6c80;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.card-entry-info .date-line svg {
+width: 14px;
+height: 14px;
+stroke: #6c6c80;
+flex-shrink: 0;
+}
+
+.card-entry-actions {
+display: flex;
+justify-content: flex-end;
+padding: 0 18px 14px;
+}
+
+.btn-delete {
+background-color: transparent;
+border: 1px solid #2a2a45;
+color: #6c6c80;
+padding: 6px 14px;
+border-radius: 8px;
+font-size: 0.78rem;
+font-family: 'Nunito', sans-serif;
+font-weight: 600;
+cursor: pointer;
+}
+
+.btn-delete:hover {
+color: #e94560;
+border-color: #e94560;
+}
+
+.toast {
+position: fixed;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%) translateY(80px);
+background-color: #4ecca3;
+color: #0f0f1a;
+padding: 12px 28px;
+border-radius: 10px;
+font-weight: 700;
+font-size: 0.9rem;
+box-shadow: 0 6px 24px rgba(78,204,163,0.35);
+transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+z-index: 999;
+}
+
+.toast.show {
+transform: translateX(-50%) translateY(0);
+}
+
+@keyframes shake {
+0%, 100% { transform: translateX(0); }
+25% { transform: translateX(-6px); }
+75% { transform: translateX(6px); }
+}
+
+@media (max-width: 420px) {
+.header h1 { font-size: 1.4rem; }
+.container { padding: 14px 12px 80px 12px; }
 }
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
-<div class="app-header">
-<div class="logo-lockup">
-<svg class="eagle-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-<!-- MEAN VICIOUS EAGLE - bold emblem style -->
-<!-- Head shape - sharp aggressive angles -->
-<path d="M45 10 C30 10 18 20 16 32 C14 42 20 50 28 54 C24 52 16 52 12 54 C16 57 22 56 28 55 C32 60 38 62 44 62 C50 62 56 58 60 52 C64 46 66 38 64 30 C62 20 54 10 45 10Z" fill="#e0dace" stroke="#a09880" stroke-width="1.2"/>
-<!-- Dark menacing eye socket -->
-<path d="M36 26 C30 25 26 28 25 33 C24 38 28 42 34 42 C40 42 44 39 45 35 C46 30 42 26 36 26Z" fill="#0a0a12"/>
-<!-- ANGRY brow - heavy, sharp, slanted down -->
-<path d="M22 24 L30 20 L42 19 L50 22" stroke="#0a0a12" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-<path d="M24 27 L32 24 L42 23 L48 25" stroke="#0a0a12" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-<!-- Fierce eye - narrow, angry -->
-<ellipse cx="35" cy="33" rx="4.5" ry="3.5" fill="#d4940a"/>
-<ellipse cx="35" cy="33" rx="2.2" ry="3" fill="#0a0a0f"/>
-<circle cx="36.5" cy="31.5" r="1" fill="white" opacity="0.8"/>
-<!-- UPPER BEAK - big, sharp, hooked -->
-<path d="M46 32 L54 30 L62 27 L70 24 L76 23 C80 23 82 26 81 29 C80 32 76 36 72 38 L66 40 L58 42 L50 43 L46 42Z" fill="#d4940a" stroke="#8a6a08" stroke-width="1"/>
-<!-- Beak hook - vicious curved tip -->
-<path d="M76 23 C80 23 83 25.5 83 29 C83 33 80 37 76 39 C73 41 70 41 68 39 L72 37 C76 34 79 31 81 29 C82 27 80 24 76 23Z" fill="#b07e06" stroke="#8a6a08" stroke-width="0.8"/>
-<!-- LOWER JAW - open, aggressive -->
-<path d="M46 42 L52 45 L60 46 L68 45 L74 42 C76 44 74 47 70 49 L62 51 L54 52 L48 50 L44 46Z" fill="#b07e06" stroke="#8a6a08" stroke-width="0.8"/>
-<!-- GAP between jaws showing darkness -->
-<path d="M48 42.5 L56 43 L64 42.5 L70 41 L72 42 L66 44.5 L58 45.5 L50 45 L46 43Z" fill="#0a0a12" opacity="0.6"/>
-<!-- BIG FANGS - upper jaw -->
-<path d="M50 42 L51.5 48 L53.5 42.5Z" fill="#f0ece0" stroke="#d0c8b8" stroke-width="0.5"/>
-<path d="M56 42.8 L57.8 50 L60 43.2Z" fill="#f0ece0" stroke="#d0c8b8" stroke-width="0.5"/>
-<path d="M63 42 L64.5 49 L66.5 42.5Z" fill="#f0ece0" stroke="#d0c8b8" stroke-width="0.5"/>
-<path d="M69 40.5 L70 47 L71.5 41Z" fill="#f0ece0" stroke="#d0c8b8" stroke-width="0.5"/>
-<path d="M74 38 L74.5 44 L76 38.5Z" fill="#f0ece0" stroke="#d0c8b8" stroke-width="0.5"/>
-<!-- BIG FANGS - lower jaw -->
-<path d="M52 45.5 L53.5 41 L55 45Z" fill="#f0ece0" stroke="#d0c8b8" stroke-width="0.5"/>
-<path d="M58 46.2 L60 41 L62 46Z" fill="#f0ece0" stroke="#d0c8b8" stroke-width="0.5"/>
-<path d="M65 45.5 L66.5 40.5 L68 45Z" fill="#f0ece0" stroke="#d0c8b8" stroke-width="0.5"/>
-<path d="M71 43.5 L72 39 L73.5 43Z" fill="#f0ece0" stroke="#d0c8b8" stroke-width="0.5"/>
-<!-- === BLOOD DRIPPING FROM BEAK === -->
-<!-- Drip 1 - long thick drip -->
-<path d="M51 48 C50.5 52 50 56 50.5 60 C50.6 63 50.2 66 50.5 68 C50.3 70 50.8 72 50.5 73" stroke="#9b0000" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-<ellipse cx="50.5" cy="75.5" rx="2.5" ry="3.2" fill="#9b0000"/>
-<!-- Drip 2 - longest, thickest -->
-<path d="M58 50 C57.5 54 57 58 57.3 62 C57.4 66 57 70 57.2 74 C57.1 77 57.5 80 57.3 82" stroke="#9b0000" stroke-width="3" fill="none" stroke-linecap="round"/>
-<ellipse cx="57.3" cy="85" rx="3" ry="3.8" fill="#9b0000"/>
-<!-- Drip 3 - medium -->
-<path d="M64.5 49 C64 53 63.5 57 63.8 60 C63.9 63 63.5 66 63.7 67" stroke="#9b0000" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-<ellipse cx="63.7" cy="69.5" rx="2.2" ry="2.8" fill="#9b0000"/>
-<!-- Drip 4 - short -->
-<path d="M70 47 C69.8 50 69.5 53 69.7 55 C69.8 57 69.5 59 69.7 60" stroke="#9b0000" stroke-width="2" fill="none" stroke-linecap="round"/>
-<ellipse cx="69.7" cy="62" rx="1.8" ry="2.4" fill="#9b0000"/>
-<!-- Drip 5 - shortest from hook -->
-<path d="M75 44 C74.8 47 74.5 49 74.7 51" stroke="#9b0000" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-<ellipse cx="74.7" cy="53" rx="1.5" ry="2" fill="#9b0000"/>
-<!-- Blood splatter drops -->
-<circle cx="52" cy="70" r="1" fill="#9b0000" opacity="0.7"/>
-<circle cx="55" cy="78" r="0.8" fill="#9b0000" opacity="0.6"/>
-<circle cx="61" cy="74" r="0.7" fill="#9b0000" opacity="0.5"/>
-<circle cx="66" cy="65" r="0.9" fill="#9b0000" opacity="0.6"/>
-<!-- Blood highlight/shine -->
-<g opacity="0.35" fill="#ff2222">
-<path d="M51 50 C50.8 53 50.6 55 51 56 L51.3 54Z"/>
-<path d="M57.5 52 C57.2 56 57 60 57.5 62 L57.8 59Z"/>
-<path d="M64.2 51 C64 54 63.8 56 64.2 57 L64.4 55Z"/>
-</g>
-<!-- Nostril -->
-<ellipse cx="58" cy="29.5" rx="1.5" ry="1" fill="#6a5008" opacity="0.7"/>
-<!-- Head feather texture -->
-<g stroke="#b8b0a0" stroke-width="0.5" opacity="0.25" fill="none">
-<path d="M30 16 C36 13 42 12 46 14"/>
-<path d="M24 22 C30 19 38 18 44 20"/>
-<path d="M20 32 C24 29 30 28 36 29"/>
-<path d="M22 42 C26 39 32 38 38 40"/>
-</g>
+<div class="container">
+<div class="header">
+<svg class="logo-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="18" y="6" width="6" height="28" rx="2" transform="rotate(-15 18 6)" fill="#e94560"/>
+<path d="M14 32 C14 32, 12 40, 16 42 C20 44, 22 38, 22 38" fill="#f0c27f"/>
+<rect x="15.5" y="28" width="8" height="5" rx="1" transform="rotate(-15 15.5 28)" fill="#a0a0b8"/>
+<rect x="36" y="4" width="6" height="28" rx="2" transform="rotate(12 36 4)" fill="#4ecca3"/>
+<path d="M38 30 C38 30, 35 38, 39 41 C43 44, 46 37, 46 37" fill="#f0c27f"/>
+<rect x="36" y="26" width="8" height="5" rx="1" transform="rotate(12 36 26)" fill="#a0a0b8"/>
+<circle cx="10" cy="50" r="3.5" fill="#e94560" opacity="0.7"/>
+<circle cx="20" cy="54" r="2.5" fill="#4ecca3" opacity="0.6"/>
+<circle cx="30" cy="52" r="4" fill="#f0c27f" opacity="0.65"/>
+<circle cx="42" cy="55" r="2.8" fill="#e94560" opacity="0.5"/>
+<circle cx="52" cy="50" r="3.2" fill="#4ecca3" opacity="0.7"/>
 </svg>
-<h1 class="app-title">EagleFang BJJ</h1>
-</div>
-<p class="app-subtitle">Training Log</p>
+<h1>Lorena&#39;s Card Tracker</h1>
 </div>
 
-<!-- TABS -->
-<div class="tab-bar">
-<button class="tab-btn active" onclick="switchTab('new')">New Entry</button>
-<button class="tab-btn" onclick="switchTab('entries')">My Entries</button>
-</div>
-
-<!-- NEW ENTRY TAB -->
-<div id="tab-new" class="tab-content active">
-
-<!-- Date & Instructor -->
 <div class="form-section">
-<div class="section-label">Session Info <span class="line"></span></div>
-<label for="entry-date">Date</label>
-<input type="date" id="entry-date">
-<label for="entry-instructor">Instructor's Name</label>
-<input type="text" id="entry-instructor" placeholder="e.g. Professor Silva">
+<h2>Log a New Card</h2>
+<div class="field">
+<label for="sentTo">Sent To</label>
+<input type="text" id="sentTo" placeholder="Recipient name" autocomplete="off">
 </div>
-
-<!-- Technique -->
-<div class="form-section">
-<div class="section-label">Technique Covered <span class="line"></span></div>
-<label for="entry-technique">Technique Name</label>
-<input type="text" id="entry-technique" placeholder="e.g. Arm bar from closed guard">
-<label for="entry-technique-notes">Technique Notes</label>
-<textarea id="entry-technique-notes" rows="4" placeholder="Detail the steps, key points, grips, transitions..."></textarea>
+<div class="field">
+<label for="dateSent">Date Sent</label>
+<input type="date" id="dateSent">
 </div>
-
-<!-- Training Rounds -->
-<div class="form-section">
-<div class="rounds-header">
-<div class="section-label" style="margin-bottom:0">Training Rounds <span class="line"></span></div>
-<div class="round-count-controls">
-<button class="round-count-btn" onclick="changeRoundCount(-1)">−</button>
-<span class="round-count-display" id="round-count-display">5</span>
-<button class="round-count-btn" onclick="changeRoundCount(1)">+</button>
+<div class="field">
+<label for="occasion">Occasion</label>
+<input type="text" id="occasion" placeholder="Birthday, Anniversary, Thank You..." autocomplete="off">
 </div>
-</div>
-<div id="rounds-container"></div>
-</div>
-
-<!-- Photo Upload -->
-<div class="form-section">
-<div class="section-label">Photos <span class="line"></span></div>
-<div class="photo-upload-area" id="photo-upload-area">
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-<path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"/>
-<path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"/>
+<div class="field">
+<label>Card Photo</label>
+<div class="photo-upload-area" id="photoArea">
+<div class="upload-placeholder">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="3" y="3" width="18" height="18" rx="2"></rect>
+<circle cx="8.5" cy="8.5" r="1.5"></circle>
+<path d="M21 15l-5-5L5 21"></path>
 </svg>
-<p>Tap to add photos</p>
-<input type="file" id="photo-input" accept="image/*" multiple>
+<p>Tap to upload a photo</p>
 </div>
-<div class="photo-previews" id="photo-previews"></div>
+<img class="photo-preview" id="photoPreview" alt="Card preview">
+<input type="file" id="photoInput" accept="image/*">
+</div>
+</div>
+<button class="btn-save" id="btnSave">Save Card</button>
 </div>
 
-<button class="btn-primary" id="save-btn" onclick="saveEntry()">Save Entry</button>
+<div class="cards-header">
+<h2>Sent Cards</h2>
+<span class="card-count" id="cardCount">0 cards</span>
 </div>
 
-<!-- ENTRIES TAB -->
-<div id="tab-entries" class="tab-content">
 <div class="search-bar">
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+<svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="11" cy="11" r="8"></circle>
+<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
 </svg>
-<input type="text" id="search-input" placeholder="Search entries..." oninput="renderEntries()">
-</div>
-<div id="entries-list"></div>
+<input type="text" id="searchInput" placeholder="Search by name or occasion...">
 </div>
 
-<!-- DETAIL OVERLAY -->
-<div class="detail-overlay" id="detail-overlay">
-<div class="detail-header">
-<button class="detail-back" onclick="closeDetail()">
-← BACK
-</button>
-<div class="detail-actions">
-<button class="btn-secondary" onclick="editEntry()">Edit</button>
-<button class="btn-danger" onclick="confirmDelete()">Delete</button>
-</div>
-</div>
-<div class="detail-body" id="detail-body"></div>
+<div id="cardsList"></div>
 </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-<img id="lightbox-img" src="" alt="Full photo">
-</div>
-
-<!-- CONFIRM DIALOG -->
-<div class="confirm-overlay" id="confirm-overlay">
-<div class="confirm-box">
-<h3>Delete Entry?</h3>
-<p>This action cannot be undone.</p>
-<div class="confirm-btns">
-<button class="btn-secondary" onclick="closeConfirm()">Cancel</button>
-<button class="btn-danger" onclick="deleteEntry()">Delete</button>
-</div>
-</div>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast">Card saved!</div>
 
 <script>
-// ========= STATE =========
-let roundCount = 5;
-let photos = []; // base64 strings
-let entries = JSON.parse(localStorage.getItem('eaglefang_entries') || '[]');
-let currentViewId = null;
-let editingId = null;
+var STORAGE_KEY = "lorenas_card_tracker";
+var currentPhoto = null;
 
-// ========= INIT =========
-function init() {
-const today = new Date().toISOString().split('T')[0];
-document.getElementById('entry-date').value = today;
-renderRounds();
-renderEntries();
-document.getElementById('photo-input').addEventListener('change', handlePhotos);
+var calendarSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>';
+
+function getCards() {
+try {
+var data = localStorage.getItem(STORAGE_KEY);
+if (data) { return JSON.parse(data); }
+return [];
+} catch(e) {
+return [];
+}
 }
 
-// ========= TABS =========
-function switchTab(tab) {
-document.querySelectorAll('.tab-btn').forEach((b, i) => {
-b.classList.toggle('active', (tab === 'new' && i === 0) || (tab === 'entries' && i === 1));
-});
-document.getElementById('tab-new').classList.toggle('active', tab === 'new');
-document.getElementById('tab-entries').classList.toggle('active', tab === 'entries');
-if (tab === 'entries') renderEntries();
+function storeCards(cards) {
+localStorage.setItem(STORAGE_KEY, JSON.stringify(cards));
 }
 
-// ========= ROUNDS =========
-function changeRoundCount(delta) {
-const next = roundCount + delta;
-if (next < 1 || next > 10) return;
-roundCount = next;
-document.getElementById('round-count-display').textContent = roundCount;
-renderRounds();
+function getTodayString() {
+var t = new Date();
+var dd = String(t.getDate()).padStart(2, "0");
+var mm = String(t.getMonth() + 1).padStart(2, "0");
+var yyyy = t.getFullYear();
+return yyyy + "-" + mm + "-" + dd;
 }
 
-function renderRounds() {
-const c = document.getElementById('rounds-container');
-// preserve existing data
-const existing = {};
-c.querySelectorAll('.round-card').forEach(card => {
-const n = card.dataset.round;
-existing[n] = {
-partner: card.querySelector('.round-partner')?.value || '',
-notes: card.querySelector('.round-notes')?.value || ''
+document.getElementById("dateSent").value = getTodayString();
+
+document.getElementById("photoInput").addEventListener("change", function(e) {
+var file = e.target.files[0];
+if (!file) return;
+var reader = new FileReader();
+reader.onload = function(ev) {
+var img = new Image();
+img.onload = function() {
+var canvas = document.createElement("canvas");
+var MAX = 800;
+var w = img.width;
+var h = img.height;
+if (w > MAX || h > MAX) {
+if (w > h) { h = h * MAX / w; w = MAX; }
+else { w = w * MAX / h; h = MAX; }
+}
+canvas.width = w;
+canvas.height = h;
+canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+currentPhoto = canvas.toDataURL("image/jpeg", 0.7);
+document.getElementById("photoPreview").src = currentPhoto;
+document.getElementById("photoArea").classList.add("has-photo");
 };
-});
-
-c.innerHTML = '';
-for (let i = 1; i <= roundCount; i++) {
-const prev = existing[i] || { partner: '', notes: '' };
-c.innerHTML += `
-<div class="round-card" data-round="${i}">
-<div class="round-number">Round ${i}</div>
-<label>Training Partner</label>
-<input type="text" class="round-partner" placeholder="Partner's name" value="${esc(prev.partner)}">
-<label>Round Notes</label>
-<textarea class="round-notes" rows="2" placeholder="What happened this round...">${esc(prev.notes)}</textarea>
-</div>`;
-}
-}
-
-// ========= PHOTOS =========
-function handlePhotos(e) {
-const files = Array.from(e.target.files);
-files.forEach(file => {
-const reader = new FileReader();
-reader.onload = () => {
-photos.push(reader.result);
-renderPhotoThumbs();
+img.src = ev.target.result;
 };
 reader.readAsDataURL(file);
 });
-e.target.value = '';
-}
 
-function renderPhotoThumbs() {
-const c = document.getElementById('photo-previews');
-c.innerHTML = photos.map((p, i) => `
-<div class="photo-thumb-wrapper">
-<img class="photo-thumb" src="${p}" onclick="openLightbox('${p.replace(/'/g, "\\'")}')">
-<button class="photo-remove" onclick="removePhoto(${i})">✕</button>
-</div>`).join('');
-}
+document.getElementById("btnSave").addEventListener("click", function() {
+var sentTo = document.getElementById("sentTo").value.trim();
+var dateSent = document.getElementById("dateSent").value;
+var occasion = document.getElementById("occasion").value.trim();
 
-function removePhoto(i) {
-photos.splice(i, 1);
-renderPhotoThumbs();
-}
-
-// ========= SAVE =========
-function saveEntry() {
-const date = document.getElementById('entry-date').value;
-const instructor = document.getElementById('entry-instructor').value.trim();
-const technique = document.getElementById('entry-technique').value.trim();
-const techniqueNotes = document.getElementById('entry-technique-notes').value.trim();
-
-if (!date) { showToast('Please select a date'); return; }
-
-const rounds = [];
-document.querySelectorAll('.round-card').forEach((card, idx) => {
-const partner = card.querySelector('.round-partner').value.trim();
-const notes = card.querySelector('.round-notes').value.trim();
-if (partner || notes) {
-rounds.push({ round: idx + 1, partner, notes });
-}
-});
-
-const entry = {
-id: editingId || Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
-date, instructor, technique, techniqueNotes,
-rounds, photos: [...photos],
-roundCount
-};
-
-if (editingId) {
-const idx = entries.findIndex(e => e.id === editingId);
-if (idx !== -1) entries[idx] = entry;
-editingId = null;
-document.getElementById('save-btn').textContent = 'Save Entry';
-} else {
-entries.unshift(entry);
-}
-
-localStorage.setItem('eaglefang_entries', JSON.stringify(entries));
-showToast(editingId ? 'Entry updated!' : 'Entry saved!');
-clearForm();
-switchTab('entries');
-}
-
-function clearForm() {
-document.getElementById('entry-date').value = new Date().toISOString().split('T')[0];
-document.getElementById('entry-instructor').value = '';
-document.getElementById('entry-technique').value = '';
-document.getElementById('entry-technique-notes').value = '';
-roundCount = 5;
-document.getElementById('round-count-display').textContent = 5;
-photos = [];
-renderPhotoThumbs();
-renderRounds();
-editingId = null;
-document.getElementById('save-btn').textContent = 'Save Entry';
-}
-
-// ========= ENTRIES LIST =========
-function renderEntries() {
-const q = document.getElementById('search-input').value.toLowerCase();
-const filtered = entries.filter(e => {
-if (!q) return true;
-return (e.date + e.instructor + e.technique + e.techniqueNotes + 
-e.rounds.map(r => r.partner + r.notes).join('')).toLowerCase().includes(q);
-});
-
-const c = document.getElementById('entries-list');
-if (filtered.length === 0) {
-c.innerHTML = `
-<div class="entries-empty">
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-<path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/>
-</svg>
-<p>${q ? 'No matching entries found' : 'No entries yet. Start logging!'}</p>
-</div>`;
+if (!sentTo) {
+var el = document.getElementById("sentTo");
+el.style.borderColor = "#e94560";
+el.style.animation = "none";
+void el.offsetHeight;
+el.style.animation = "shake 0.4s ease";
+setTimeout(function() { el.style.borderColor = ""; }, 1500);
 return;
 }
 
-c.innerHTML = filtered.map(e => {
-const d = formatDate(e.date);
-const rc = e.rounds.length;
-return `
-<div class="entry-card" onclick="openDetail('${e.id}')">
-<div class="entry-card-header">
-<div class="entry-date">${d}</div>
-${rc ? `<span class="entry-rounds-badge">${rc} ROUND${rc > 1 ? 'S' : ''}</span>` : ''}
-</div>
-${e.instructor ? `<div class="entry-instructor">Instructor: ${esc(e.instructor)}</div>` : ''}
-${e.technique ? `<div class="entry-technique">${esc(e.technique)}</div>` : ''}
-${e.photos && e.photos.length ? `<div class="entry-photos-indicator">📷 ${e.photos.length} photo${e.photos.length > 1 ? 's' : ''}</div>` : ''}
-</div>`;
-}).join('');
-}
+var card = {
+id: Date.now(),
+sentTo: sentTo,
+dateSent: dateSent,
+occasion: occasion,
+photo: currentPhoto
+};
 
-// ========= DETAIL VIEW =========
-function openDetail(id) {
-currentViewId = id;
-const e = entries.find(x => x.id === id);
-if (!e) return;
+var cards = getCards();
+cards.unshift(card);
+storeCards(cards);
 
-let html = `<div class="detail-date">${formatDate(e.date)}</div>`;
+document.getElementById("sentTo").value = "";
+document.getElementById("occasion").value = "";
+document.getElementById("dateSent").value = getTodayString();
+currentPhoto = null;
+document.getElementById("photoPreview").src = "";
+document.getElementById("photoArea").classList.remove("has-photo");
+document.getElementById("photoInput").value = "";
 
-if (e.instructor) {
-html += `<div class="detail-field-label">Instructor</div>
-<div class="detail-field-value">${esc(e.instructor)}</div>`;
-}
-
-html += `<div class="detail-section">
-<div class="detail-section-title">Technique</div>`;
-if (e.technique) {
-html += `<div class="detail-field-label">Technique Name</div>
-<div class="detail-field-value">${esc(e.technique)}</div>`;
-}
-if (e.techniqueNotes) {
-html += `<div class="detail-field-label">Notes</div>
-<div class="detail-field-value">${esc(e.techniqueNotes)}</div>`;
-}
-html += `</div>`;
-
-if (e.rounds.length) {
-html += `<div class="detail-section">
-<div class="detail-section-title">Training Rounds</div>`;
-e.rounds.forEach(r => {
-html += `<div class="detail-round-card">
-<div class="round-number">Round ${r.round}</div>
-${r.partner ? `<div class="detail-field-label">Partner</div><div class="detail-field-value">${esc(r.partner)}</div>` : ''}
-${r.notes ? `<div class="detail-field-label">Round Notes</div><div class="detail-field-value">${esc(r.notes)}</div>` : ''}
-</div>`;
-});
-html += `</div>`;
-}
-
-if (e.photos && e.photos.length) {
-html += `<div class="detail-section">
-<div class="detail-section-title">Photos</div>
-<div class="detail-photos">
-${e.photos.map(p => `<img class="detail-photo" src="${p}" onclick="openLightbox('${p.replace(/'/g, "\\'")}')">`).join('')}
-</div>
-</div>`;
-}
-
-document.getElementById('detail-body').innerHTML = html;
-document.getElementById('detail-overlay').classList.add('active');
-}
-
-function closeDetail() {
-document.getElementById('detail-overlay').classList.remove('active');
-currentViewId = null;
-}
-
-// ========= EDIT =========
-function editEntry() {
-const e = entries.find(x => x.id === currentViewId);
-if (!e) return;
-closeDetail();
-
-editingId = e.id;
-document.getElementById('entry-date').value = e.date;
-document.getElementById('entry-instructor').value = e.instructor;
-document.getElementById('entry-technique').value = e.technique;
-document.getElementById('entry-technique-notes').value = e.techniqueNotes;
-
-roundCount = e.roundCount || e.rounds.length || 5;
-document.getElementById('round-count-display').textContent = roundCount;
-renderRounds();
-
-// fill in round data
-e.rounds.forEach(r => {
-const card = document.querySelector(`.round-card[data-round="${r.round}"]`);
-if (card) {
-card.querySelector('.round-partner').value = r.partner;
-card.querySelector('.round-notes').value = r.notes;
-}
+showToast("Card saved!");
+renderCards();
 });
 
-photos = e.photos ? [...e.photos] : [];
-renderPhotoThumbs();
+document.getElementById("searchInput").addEventListener("input", function() {
+renderCards();
+});
 
-document.getElementById('save-btn').textContent = 'Update Entry';
-switchTab('new');
-window.scrollTo({ top: 0, behavior: 'smooth' });
+function deleteCard(id) {
+if (!confirm("Delete this card entry?")) return;
+var cards = getCards().filter(function(c) { return c.id !== id; });
+storeCards(cards);
+renderCards();
 }
 
-// ========= DELETE =========
-function confirmDelete() {
-document.getElementById('confirm-overlay').classList.add('active');
-}
-
-function closeConfirm() {
-document.getElementById('confirm-overlay').classList.remove('active');
-}
-
-function deleteEntry() {
-entries = entries.filter(e => e.id !== currentViewId);
-localStorage.setItem('eaglefang_entries', JSON.stringify(entries));
-closeConfirm();
-closeDetail();
-renderEntries();
-showToast('Entry deleted');
-}
-
-// ========= LIGHTBOX =========
-function openLightbox(src) {
-document.getElementById('lightbox-img').src = src;
-document.getElementById('lightbox').classList.add('active');
-}
-
-function closeLightbox() {
-document.getElementById('lightbox').classList.remove('active');
-}
-
-// ========= TOAST =========
-function showToast(msg) {
-const t = document.getElementById('toast');
-t.textContent = msg;
-t.classList.add('show');
-setTimeout(() => t.classList.remove('show'), 2400);
-}
-
-// ========= UTILS =========
-function esc(str) {
-const d = document.createElement('div');
-d.textContent = str || '';
-return d.innerHTML;
+function escHtml(str) {
+var div = document.createElement("div");
+div.textContent = str;
+return div.innerHTML;
 }
 
 function formatDate(dateStr) {
-const [y, m, d] = dateStr.split('-');
-const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-return `${months[parseInt(m) - 1]} ${parseInt(d)}, ${y}`;
+var parts = dateStr.split("-");
+var y = parts[0];
+var m = parseInt(parts[1], 10);
+var d = parseInt(parts[2], 10);
+var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+return months[m - 1] + " " + d + ", " + y;
 }
 
-// ========= BOOT =========
-init();
+function renderCards() {
+var cards = getCards();
+var query = document.getElementById("searchInput").value.toLowerCase();
+var filtered = cards.filter(function(c) {
+return c.sentTo.toLowerCase().indexOf(query) !== -1 ||
+(c.occasion && c.occasion.toLowerCase().indexOf(query) !== -1);
+});
+
+document.getElementById("cardCount").textContent = cards.length + (cards.length === 1 ? " card" : " cards");
+
+var list = document.getElementById("cardsList");
+
+if (filtered.length === 0) {
+var msg = cards.length === 0 ? "No cards logged yet - add your first one above!" : "No matching cards found.";
+list.innerHTML = '<div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 8h20"></path></svg><p>' + msg + '</p></div>';
+return;
+}
+
+var html = "";
+for (var i = 0; i < filtered.length; i++) {
+var c = filtered[i];
+var dateStr = c.dateSent ? formatDate(c.dateSent) : "No date";
+var photoHtml = c.photo ? '<img class="card-entry-photo" src="' + c.photo + '" alt="Card photo">' : "";
+var occasionHtml = c.occasion ? '<span class="occasion-badge">' + escHtml(c.occasion) + '</span>' : "";
+html += '<div class="card-entry">' + photoHtml + '<div class="card-entry-info"><div class="sent-to">' + escHtml(c.sentTo) + '</div>' + occasionHtml + '<div class="date-line">' + calendarSVG + " " + dateStr + '</div></div><div class="card-entry-actions"><button class="btn-delete" onclick="deleteCard(' + c.id + ')">Delete</button></div></div>';
+}
+list.innerHTML = html;
+}
+
+function showToast(msg) {
+var t = document.getElementById("toast");
+t.textContent = msg;
+t.classList.add("show");
+setTimeout(function() { t.classList.remove("show"); }, 2200);
+}
+
+renderCards();
 </script>
 </body>
 </html>
